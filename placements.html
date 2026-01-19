@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Statistics</title>
+    <link rel="shortcut icon" href="images/logoonly1.png" type="image/x-icon">
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Container for the entire header */
+.header {
+    display: flex;
+    align-items: center; /* vertical alignment of all items */
+    gap: 15px;           /* horizontal spacing between items */
+    padding: 10px 20px;
+}
+
+/* College logo */
+.header img#collegelogo {
+    width: 330px;
+    margin-left:-50px;
+    margin-top:-70PX;
+margin-right:330px;
+}
+
+.side-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Text elements */
+.side-menu .text {
+    font-size: 17px;
+    color:grey;
+}
+
+.side-menu #TNEA {
+    font-size: 17px;
+    color: #15263d;
+    margin-right:10px;
+    margin-left:7px;
+}
+
+
+
+/* Social icons container */
+.side-menu .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 7px; /* spacing between icons */
+}
+
+/* Individual social icons */
+.side-menu .social-icons img {
+    width: 18px;
+    height: 18px;
+}
+
+.side-menu .social-icons{
+    margin-right: 10px;;
+}
+
+/* Links */
+.side-menu a {
+    text-decoration: none;
+    color: grey;
+    font-size: 17px;
+    margin-left: 5px;
+}
+
+/*2nd row*/
+.bgblue{
+    display:flex;
+    gap:100px;
+    justify-content:center;
+    box-sizing: border-box; 
+    margin-top: -50px;
+    background-color:#15263d; 
+    height:40px;
+    color:white;
+    padding: 11px 0;
+    position:relative;
+   
+}
+
+.menu-item:hover .menu-list{
+   display: flex;
+   /*display: none hides the menu so the page layout is clean.
+
+Hover triggers display: flex to show it.
+
+Absolute positioning ensures the menu appears visually over the page rather than taking up space in 
+the normal flow.*/
+
+    
+}
+
+.menu-item:hover{
+    text-decoration: underline;
+    text-decoration-color: aquamarine;
+   text-decoration-thickness: 2px;
+   text-underline-offset:12px;
+   /*text-underline-offset controls the distance between the text and its underline.*/
+}
+
+.menu-item {
+   
+    cursor: pointer;
+
+}
+
+.menu-list {
+    display: none;               /* hidden by default */
+    flex-wrap: wrap;  
+    position:absolute;
+      right:0;            
+    
+      top:100%;
+    /*top: 0 → places the element’s top edge aligned with the parent’s top edge.
+
+top: 100% → places the element’s top edge aligned with the parent’s bottom edge.*/
+    width:100vw;
+    left:0;
+                   /*width: 66.9vw; */              
+    background-color: #e3e3e3; 
+    color: #15263d;
+    
+    gap: 20px;
+    box-sizing: border-box;
+     padding: 20px 50px;  
+    z-index: 1000;  
+    justify-content: center;
+    
+}
+
+ .column{
+ border-right: 0.2px solid #15263d; 
+ padding-right: 50px;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+ li{
+    line-height:25px;
+   
+} 
+
+.column h4{
+   
+    padding-bottom:-10px;
+}
+
+.bgblue .menu-item  a{
+    color:white;
+    text-decoration: none;
+}
+
+/*media queries*/
+
+
+
+/* HAMBURGER ICON */
+.hamburger {
+  display: none;
+   flex-direction: column;
+  cursor: pointer;
+  gap: 5px; 
+}
+
+
+
+/* RESPONSIVE — show hamburger only on small screens */
+@media (max-width: 768px) {
+  /* Hide text, links, and icons in small screens */
+  .side-menu .text,
+  .side-menu .social-icons,
+  .side-menu a {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Show the hamburger icon */
+  .hamburger {
+    display: flex;
+    position: absolute;   /* free placement */
+
+   /* Positioned relative to nearest “positioned ancestor” (relative, absolute, fixed, sticky).
+If no ancestor is positioned, it defaults to the <html> / body (effectively the viewport).
+Result in your code:
+.header is static → nearest positioned ancestor doesn’t exist → hamburger is positioned relative to page/viewport.
+top: 20px; right: 20px → 20px from top-right of the page, not the header.*/
+    top: 25px;            /* adjust vertical alignment */
+    right: 25px;          /* place near right edge */
+    z-index: 10000;        /* stay above everything */
+   } 
+
+  /* Optionally adjust logo for small screens */
+  /* .header img#collegelogo {
+    width: 250px;
+    margin-left: 10px;
+    margin-top: -40px;
+    margin-right: 0;
+  } */
+
+  /* Adjust blue navigation bar spacing */
+  .bgblue {
+    gap: 40px;
+  } 
+
+   .side-menu {
+  position: fixed;
+   top: 0; 
+  right: -100%;
+  width: 280px;
+  height: 80%;
+  background-color: white;
+   box-shadow: -2px 0 10px rgba(0,0,0,0.2); 
+   /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+  display: flex;
+  flex-direction: column; 
+  align-items:center;   /*🔹 align text to left */
+  justify-content: center; /* 🔹 center vertically */
+  gap: 15px;             /* 🔹 add spacing between items */
+  padding: 40px 25px;
+  box-sizing: border-box;
+  /* By default, CSS uses box-sizing: content-box, which means:
+The width/height you set applies only to the content.
+Padding and border are added outside of that width/height. */
+ transition: right 0.3s ease;
+
+  z-index: 9999; /*z-index controls the stacking order of elements on the page. */
+} 
+
+ .hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #15263d;
+  border-radius: 2px;
+} 
+
+/* SIDE MENU (SLIDE FROM RIGHT) */
+
+
+ .side-menu.active {
+  right: 0;
+}
+
+.side-menu .text,.side-menu a {
+  font-size: 17px;
+  color: #15263d;
+  margin-bottom: 10px;
+}
+
+.side-menu .social-icons {
+  display: flex;
+  gap: 12px;
+  margin: 15px 0; 
+  justify-content: center; /* 🔹 center social icons */
+ }
+
+.side-menu .social-icons img {
+  width: 20px;
+  height: 20px;
+}
+
+.side-menu a {
+  color: #15263d;
+  text-decoration: none;
+  font-size: 17px;
+  margin: 5px 0;
+}
+} 
+
+
+/*FULL SIZED COLLEGE IMAGE ROW STLYING*/
+.fullSizedImage{
+  position:relative;
+}
+
+.Apply-now  {
+  position:fixed;
+  left:1181px;
+  top:290px;
+  /* width:200px; */
+ transform:rotate(270deg);
+  z-index: 2;
+  
+  
+}
+
+.fullSizedImage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* makes image dim 
+  0.1 to 0.9 transparent ,1->opaque*/
+  z-index: 1;
+
+/* 
+Overlay explanation:
+- top:0; left:0 → starts from top-left of parent
+- width/height:100% → covers full image area
+- z-index:1 → sits above image but below text
+- rgba(...) → adds transparent black dim effect
+*/
+}
+
+/*CEED*/
+
+.ceedpara{
+    display:flex;
+    flex-direction:row;
+    
+
+}
+
+.ceedparaalign {
+  max-width: 1100px; /* 🔹 Controls text width */
+}
+
+.Aboutceed{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    margin-bottom:80px;
+    cursor:pointer;
+
+
+}
+
+
+
+
+
+.ceed{
+  position:absolute;
+   top:165px;
+   left:470px;  
+  letter-spacing: 10PX;
+  z-index: 2;
+  border:7px solid white;
+  /* width:130px; */
+   height:40px; 
+  display:flex;
+  flex-direction:row ;
+   justify-content: center; 
+  align-items: center; 
+  padding-left:30px;
+   padding-right:30px; 
+  padding-top:18px;
+  padding-bottom:18px;
+  letter-spacing: 4px;;
+}
+
+ .Aboutceed .placementteam:hover + .placementteamhr {/*since hr and placement team div are siblings of the parent Aboutceed using + */
+  display: block !important;/*to override the existing inline css property display:none in hr using important*/
+  width:130px ;
+  height:4px ;
+  background-color:aquamarine ; 
+  border:none ;
+   margin-top: 35px;
+  margin-left: -156px ;
+}
+
+/*PLUS*/
+.plus{
+    background-color:rgb(193, 193, 193);
+    width:14px;
+    height:13px;
+    
+    margin-left:110px;
+    padding:10px;
+}
+
+.plus .vertical{
+    width:13px;
+    height:4px;
+     transform:rotate(90deg); 
+    background-color: #15263d;
+     border-radius: 4px;;
+}
+
+.plus .horizontal{
+    width:13px;
+    height:4px;
+    background-color: #15263d;
+    transform:translatey(3.5px);
+    border-radius: 4px;;
+    
+   
+}
+
+
+
+/*placements team with js*/
+
+.content-section {
+  /* overflow: hidden; */
+  transition: all 1s linear;
+  /* display:flex;
+  flex-direction:row; */
+  /* gap:20px;
+  flex-wrap: nowrap; */
+  position:relative;
+  
+   
+
+
+}
+
+.staff-details{
+  background-color:#15263d;
+  width:270px;
+  padding-left:30px;
+   padding-right:30px;
+   padding-top:10px;
+    padding-bottom:10px;
+     
+    text-align: center;
+    color:white;
+    position:absolute;
+    left:390px;
+    top:1px;
+   
+}
+
+
+/* Apply line-height directly to the block elements inside .content-section: */
+.content-section .staff-details h2,
+.content-section .staff-details h3,
+.content-section .staff-details p {
+    line-height: 15px;}
+
+
+   /*Department wise placement details*/
+
+   .dept-table{
+    display:flex;
+    margin-left:110px;
+    margin-top: 50px;;
+    
+   }
+
+   .dept-table2{
+    display:flex;
+    margin-left:320px;
+    
+   }
+
+.dept-table .border, .dept-table2 .border{
+  border:1px solid lightgray;
+  padding: 33px 49px;/*This is a CSS pseudo-class combination:
+:first-child → targets the very first child element inside its parent.
+:not(...) → means “everything except this”.*/
+  
+}
+
+.dept-table .border:not(:first-child), .dept-table2 .border:not(:first-child) {
+  border-left: none;
+}
+
+.dept-table2 .border{
+  border-top:none;
+}
+
+.dept-table .border:hover{
+  background-color:#15263d;
+  color:white;
+}
+
+.dept-table2 .border:hover{
+  background-color:#15263d;
+  color:white;
+}
+
+/*animation of image*/
+.animationimage{
+position: relative;
+  width: 900px;
+  height: 500px;
+ margin-left: 170px;;
+ margin-top:90px;
+  overflow: hidden;
+
+
+}
+
+ .animationimage img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  /* object-fit: cover; */
+  animation-timing-function: ease-in-out;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+}
+
+/* First image */
+.animationimage img:nth-child(1) {
+  top: 0;
+  animation-name: slide1;
+}
+
+/* Second image */
+.animationimage img:nth-child(2) {
+  top: 100%;
+  animation-name: slide2;
+}
+
+/* Image 1 animation */
+@keyframes slide1 {
+  0% { top: 0; }           /* visible */
+  40% { top: 0; }          /* stay for 8s */
+  45% { top: -100%; }      /* slide out */
+  90% { top: 100%; }      /* stay hidden */
+  100% { top: 0%; }         /* return for next cycle */
+}
+
+/* Image 2 animation */
+@keyframes slide2 {
+  0% { top: 100%; }        /* below view */
+  40% { top: 100%; }       /* wait */
+  45% { top: 0; }          /* slide in */
+  90% { top: 0; }          /* hold 10s */
+  100% { top: -100%; }     /* slide up and out */
+}
+
+/* PLACEMENT STATISTICS WHILE HOVERING TURNS INTO GREEN */
+.table-heading .table-1:hover + .table-1div,
+.table-heading:has(.table-1hr:hover)  .table-1div
+/* CSS has no previous sibling selector, but you can use :has() 
+(supported in most modern browsers like Chrome, Edge, Safari 105+, Firefox 121+). */
+{
+  display:block !important;
+}
+
+.table-heading .table-3:hover + .table-3div,
+.table-heading:has(.table-3hr:hover)  .table-3div{
+  display:block !important;
+}
+
+.table-heading .table-7:hover + .table-7div,
+.table-heading:has(.table-7hr:hover)  .table-7div{
+  display:block !important;
+}
+
+.table-heading .table-5:hover + .table-5div,
+.table-heading:has(.table-5hr:hover)  .table-5div{
+  display:block !important;
+}
+
+.table-heading .table-2:hover + .table-2div,
+.table-heading:has(.table-2hr:hover)  .table-2div{
+  background-color:rgb(238, 255, 250)  !important;
+}
+
+.table-heading .table-4:hover + .table-4div,
+.table-heading:has(.table-4hr:hover)  .table-4div{
+  background-color:rgb(238, 255, 250)  !important;
+}
+
+.table-heading .table-6:hover + .table-6div,
+.table-heading:has(.table-6hr:hover)  .table-6div{
+  background-color:rgb(238, 255, 250)  !important;
+}
+
+ /* Circle-POP-ups */
+
+/* Circle indicators for animated images */
+.image-indicators {
+  display: flex;
+  gap: 15px;
+   margin-left: 590px;;
+ margin-top:30px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #bbb;
+  transition: background-color 0.3s;
+}
+
+.circle.active {
+  background-color: #007bff; /* Dark blue when active */
+}
+
+/*the end*/
+
+
+.footer-section{
+background-color:#162e50;
+padding-top:45px;
+padding-left:15px;
+color:lightgray;
+position:relative;
+height:610px;
+
+
+
+}
+
+.footer-section table{
+  line-height: 25px;
+}
+
+
+ /* .footer-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 30px 0;
+} */
+
+
+.vertical-line{
+  width:0.5px;
+  transform: scaleX(0.9); /* makes it ~0.3px thin so 0.3px is very thin than 0.9px */
+  height:510px;
+  background-color:rgb(100, 195, 163);
+  position:absolute;
+  left:320px;
+  top:115px;
+}
+
+.contact-table .label{
+  padding-right: 0.1px;
+}
+
+.Explore{
+  position:absolute;
+  left:335px;
+  top:110px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.QuickLinks{
+  position:absolute;
+  left:650px;
+  top:110px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.ProfessionalChapters{
+  position:absolute;
+  left:650px;
+  top:450px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.Academics{
+  position:absolute;
+  left:960px;
+  top:110px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.Followuson{
+  position:absolute;
+  left:960px;
+  top:380px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.Followuson .followuson-images{
+display: flex;
+flex-direction: row;
+}
+/*for images to align horizontally give flex with flex direction row and padding right directly within the image tag using inline */
+
+.copyright{
+  background-color: #111f33;
+   height:43px;
+  width:100%; 
+ text-align: center;
+ color:rgb(136, 136, 136);
+ padding-top:24px;
+ 
+}
+
+/*WHEN CLICKING ON "ABOUT" SHOULD HOVER THE DROPDOWN LIST */
+.abt-dropdown{
+  position:relative;
+  padding-bottom: 220px; /* slightly larger than dropdown height */
+  
+  
+
+}
+
+.dropdown-menu{
+  position:absolute;
+   z-index:9999;
+  left: -70px;
+  top:13px;
+  width:190px;
+  height:200px;
+  background-color: #e3e3e3; 
+  
+  padding:0;
+  
+     /* padding-left:30px;;
+   padding-right:14px;;   */
+   /* padding-top:15px;;
+   padding-bottom:15px;;
+    */
+  
+ 
+}
+
+
+
+ .abt-dropdown:hover .dropdown-menu{
+display:block !important;
+
+}
+.dropdown-menu li a{
+  display: flex;             /* use flex inside <a> */
+  justify-content: flex-start;   /* horizontal center */
+  align-items: flex-start;       /* vertical center */
+   padding-left:30px;;
+   padding-right:14px;; 
+  
+  
+}
+
+.dropdown-menu li :hover {
+    background-color: aquamarine;
+    
+  
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+    <div class="header">
+    <img id="collegelogo" src="F:\Full stack course\college website\images\collegelogo.png" alt="college logo">
+    
+    <!-- Hamburger button -->
+ <div class="hamburger" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+
+</div> 
+
+<!-- SIDE MENU  -->
+<div class="side-menu" id="sideMenu">
+  <div class="text">SII (Study in India)</div>
+  <div class="text">TNEA Code: 3712</div>
+
+  <div class="social-icons">
+    <img src="images/youtubeicon.png" alt="youtube">
+    <img src="images/facebooklogo2.png" alt="facebook">
+    <img src="images/headerinstagram3.webp" alt="instagram">
+    <img src="images/phonelogo.png" alt="phone">
+  </div>
+
+  <div class="text">Contact</div>
+  <a href="index.html">Home</a>
+  </div>  
+    </div>
+    <div class="bgblue">
+        <div class="menu-item abt-dropdown"><a href="#">About</a>
+          
+            <ul class="dropdown-menu" type="none" style="display:none">
+
+       <li><a href="institution.html" style="color:black; line-height:40px;">Institution</a></li>
+        <li><a href="visionandmission.html" style=" color: #15263d;line-height:40px;">Vision and Mission</a></li>
+        <li><a href="#" style=" color: #15263d;line-height:40px;">Management</a></li>
+        <li><a href="#" style=" color: #15263d;line-height:40px;">Principal</a></li>
+        <li><a href="#" style=" color: #15263d;line-height:40px;">Events</a></li>
+      </ul>
+      
+
+        </div>
+        
+        <div class="menu-item">Study
+            <div class="menu-list">
+            <div class="column">
+                <ul type="none">
+                <h4>Programmes</h4>
+                
+                    <li>Undergraduate</li>
+                    <li>Postgraduate</li>
+                    <li>Research</li>
+
+                </ul>
+            </div>
+            <div  class="column">
+                <ul type="none">
+                <h4>Hands-on Learning</h4>
+               
+                    <li>Fluke</li>
+                    <li>Yokogawa</li>
+                    <li>Bosch</li>
+                    <li>Siemens</li>
+
+                </ul>
+            </div>
+
+            <div class="column">
+                <ul type="none">
+                <h4>Academic Excellence</h4>
+                
+                <li>OBE</li>
+                <li>FCLF</li>
+                <li>KLDA</li>
+                <li>CLED</li></ul>
+            </div>
+
+             <div  >
+                            <ul type="none">
+                            <h4>Academic Innovation</h4>
+               
+                <li>Prototyping</li>
+                <li>Innovation Practicum</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+        <div class="menu-item"><a href="admission.html">Admissions</a></div>
+
+        <div class="menu-item">Research</div>
+        <div class="menu-item"><a style="text-decoration:none;"href="placements.html">Placements</a></div>
+    </div>
+<div class="fullSizedImage">
+   <img  src="images/placementimage.webp" alt="college image" width="100%" height="420vh"> 
+   <DIV CLASS="ceed">
+   <h1 style="font-size: 36px; color:white">STATISTICS</h1>
+   </DIV>
+  <div class="Apply-now">
+  
+  <button style="height:40px;width:120px;background-color:#15263d;border:none;"><a style="font-size:17px;color:white;text-decoration: none; " href="#" >Apply Now</a></button>
+  
+</div>
+ </div>  
+
+ <div class="ceedpara">
+    <div class="ceedparaalign">
+      <h1 style="margin-left:430px;margin-top:70px;font-size: 30px;color:#15263d;">The Key Responsibilities</h1>
+   <p style="text-align: justify;line-height: 35px;margin-left:110px;margin-top:30px;font-size:17px;color:#15263d;"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod architecto velit ex blanditiis ipsum asperiores sapiente impedit illo laboriosam et reprehenderit, numquam laudantium eaque hic illum officia enim. Beatae veniam impedit ullam architecto labore temporibus quam delectus modi qui quidem sint hic corporis repellat iure doloremque enim commodi, earum exercitationem, magni inventore? Nulla corporis deserunt officiis dolores ducimus dolor pariatur quibusdam, ut dolorem laborum molestiae ab incidunt assumenda facere ea!</p>
+    </div>
+    
+    
+ </div>
+
+ <!-- placement team with js -->
+ <div class="Aboutceed"  onclick="toggleSection(this)">
+ <div class="plus">
+    <div>
+        <div class="horizontal"></div>
+        <div class="vertical"></div>
+    </div>
+ </div>
+ 
+ <div class="placementteam" style="margin-top:8px;margin-left:8px;color:#15263d;font-weight:bold;font-size:18px;">
+  PLACEMENT TEAM</div>
+  <hr class="placementteamhr"style="display:none;">
+ 
+ </div>
+ 
+
+
+ <!-- Hidden content -->
+<div class="content-section" style="display:none; margin-left:300px; margin-top: 120px; line-height:25px;">
+  <div class="staff-title" style="position:absolute;top:-100px;left:140px;">
+  <h1 style="font-size: 30px;color:#15263d ">Placement Director</h1>
+  <hr style="width:130px;height:4px;background-color:aquamarine;border:none;margin-top: -10px;">
+  </div>
+    <div class="staff-image" >
+<img src="images/dummyimage1.webp" alt="" width=300px height=283px >
+    </div>
+
+    <div  class="staff-details">
+<h2 >Dr.Lorem ipsum dolor</h2>
+Placement Director
+<h3 >Mobile</h3>
+<p>9442 346 113</p>
+<p>9842 230 111</p>
+<h3 >E-mail</h3>
+<p>placement@sct.ac.in</p>
+    </div>
+    <br>
+    <div class="staff-talks">
+
+      <p style="width:300px;text-align: justify;line-height: 20px;display: inline-block;color:#15263d">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+         Natus fugiat totam ducimus autem, minus neque repellat, 
+         magni consequuntur at exercitationem vel, nisi quibusdam? Unde, 
+         non maiores ratione sunt aperiam qui incidunt.</p>
+
+         <p style="width:330px;text-align: justify;line-height: 20px; display: inline-block;margin-left: 86px;color:#15263d;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+         Natus fugiat totam ducimus autem, minus neque repellat, 
+         magni consequuntur at exercitationem vel, nisi quibusdam? Unde, 
+         non maiores ratione sunt aperiam qui incidunt.</p>
+    </div>
+    <br><br>
+    
+<h1 style="font-size: 30px;color:#15263d;margin-left: -50px;display: inline-block;">Placement Officers</h1>
+<h1 style="font-size: 30px;color:#15263d;margin-left: 185px;display:inline-block;">Placement Coordinators</h1>
+    <div class="placement-officers" style="border:4px solid aquamarine;width:380px;height:150px;margin-top: 20px;margin-left: -120px;;text-align: center;padding:30px;color:#15263d;display:inline-block;line-height: 30px;" >
+      
+      Mr. N. lorem<br>
+      Mr. T. lorem<br>
+      Mr. N. lorem
+    </div>
+
+<div class="placement-coordinators"style="border:4px solid aquamarine;width:380px;height:150px;margin-top: 20px;margin-left: 50px;;text-align: center;padding:30px;color:#15263d;position:absolute;top:583px;left:365px;line-height: 30px;;" >
+      
+      Dr. Lorem ipsum<br>
+Dr. Lorem ipsum<br>
+Ms. Lorem ipsum<br>
+Ms. Lorem ipsum<br>
+Ms. Lorem ipsum dolor sit
+    </div>
+
+   
+</div>
+
+ <h1 style="margin-left:380px;font-size: 30px;color:#15263d;margin-top: 70px;">Department Wise Placement Details</h1>
+
+
+ <hr style="width:175px ;height:4px ;background-color:aquamarine ; border:none ;margin-top:-10px;margin-left:550px;">
+
+<div class="dept-table">
+  <div class="border" style="padding: 30px 46.9px;">AI&DS</div>
+  <div class="border"style="padding: 30px 51px;">CIVIL</div>
+  <div  class="border">CSBS</div>
+  <div class="border" style="padding: 30px 54px;">CSE</div>
+  <div class="border" style="padding: 30px 54.5px;">ECE</div>
+  <div class="border"style="padding: 30px 54.8px;">EEE</div>
+  <div class="border"style="padding: 30px 63.3px;">IT</div>
+  
+</div>
+
+<div class="dept-table2">
+  <div class="border"style="padding: 30px 53.5px;">MCT</div>
+   <div class="border" style="padding: 30px 47.3px;">MECH</div>
+   <div class="border" style="padding: 30px 23.8px;">MTECH CSE</div>
+   <div class="border" style="padding: 30px 53px;">MBA</div>
+</div>
+
+<!-- animation -->
+ <div class="animationimage">
+    <img width="900px" height="500px"  src="images/placement.webp" alt="">
+    <img src="images/placement1.webp" alt="">
+    
+ </div>
+
+ <!-- Circle-POP-ups -->
+  <div class="image-indicators">
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+
+ <!--PLACEMENT STATISTICS-->
+
+
+ <!-- NOTE:<div style="display:flex;gap:200px;">2024 92.6% 51 6.2 216</div>
+→ This entire text is one single child node (a text node).
+Hence, there’s nothing to apply a gap between. -->
+
+
+ <h1 style="margin-left:380px;font-size: 30px;color:#15263d;margin-top: 70px;">
+  Placement Statistics as on May 2025</h1>
+  <hr style="width:195px ;height:4px ;background-color:aquamarine ; border:none ;margin-top:-10px;margin-left:530px;">
+  
+    <div class="table-heading" style="margin-left:230px;display:flex;flex-direction:column;margin-top: 50px;font-size: 14.5px;position:relative;" >
+      <div  style="display:flex; flex-direction: row;gap:23px;margin-bottom: 2px;font-weight:bold;color:#15263d;font-size:14px;">
+      <div>YEAR OF PASSING</div>
+      <div>PLACEMENT PERCENTAGE</div>
+
+     <div> MAX SALARY(LPA)</div>
+     <div> AVG SALARY(LPA)</div>
+     <div> COMPANY VISITED</div>
+    </div>
+    <hr class="table-1hr" style="width:803px ;height:2px ;background-color:aquamarine ; border:none ;margin-left: -5px;">
+  
+    <div class="table-1" style="display:flex;margin-top:9px;margin-bottom: 9px;z-index:1;">
+      <div style="margin-right:119px ;">2025</div>
+      <div style="margin-right:170px ;">90.9%</div>
+      <div style="margin-right:134px ;">47</div>
+      <div style="margin-right:130px ;">6.2</div>
+      <div >221(so far)</div>
+    </div>
+    <!-- table-1 div -->
+     <div class="table-1div" style="width:803px;height:50px;background-color: rgb(238, 255, 250);position:absolute;top:27px;left:-5px;display:none"></div>
+
+    <hr class="table-2hr" style="width:803px ;height:0.6px ;background-color:rgb(217, 216, 216) ; border:none ;;margin-left: -5px;">
+
+    
+    <div class="table-2" style="display:flex;margin-top:9px;margin-bottom: 9px;z-index:1;">
+      <div style="margin-right:119px ;">2024</div>
+      <div style="margin-right:170px ;">92.6%</div>
+      <div style="margin-right:134px ;">51</div>
+      <div style="margin-right:130px ;">6.2</div>
+      <div>216</div>
+    </div>
+    <!-- table-2div -->
+     <div class="table-2div" style="width:803px;height:50px;background-color: rgb(249, 249, 249);position:absolute;top:77.5px;left:-5px;"></div>
+  <hr  class="table-3hr"style="width:803px ;height:0.6px ;background-color:rgb(217, 216, 216) ; ; border:none ;;margin-left: -5px;">
+
+  <div  class="table-3"style="display:flex;margin-top:9px;margin-bottom: 9px;z-index:1;">
+    <div style="margin-right:119px ;">2023</div>
+    <div style="margin-right:170px ;">97.0%</div>
+    <div style="margin-right:134px ;">95</div>
+    <div style="margin-right:130px ;">6.2</div>
+    <div>232</div>
+  </div>
+  <!-- table-3div -->
+    <div class="table-3div" style="width:803px;height:50px;background-color: rgb(238, 255, 250);position:absolute;top:128px;left:-5px;display: none;;"></div> 
+
+    <hr class="table-4hr" style="width:803px ;height:0.6px ;background-color:rgb(217, 216, 216) ; border:none ;;margin-left: -5px;">
+  
+  
+  <div class="table-4" style="display:flex;margin-top:9px;margin-bottom: 9px;z-index:1;">
+    <div style="margin-right:119px ;">2022</div>
+    <div style="margin-right:182px ;">96%</div>
+    <div style="margin-right:134px ;">32</div>
+    <div style="margin-right:130px ;">5.5</div>
+    <div>226</div>
+  </div>
+  <!-- table-4div -->
+  <div class="table-4div" style="width:803px;height:50px;background-color: rgb(249, 249, 249);position:absolute;top:179px;left:-5px;"></div>
+<hr class="table-5hr" style="width:803px ;height:0.8px ;background-color:rgb(217, 216, 216) ; ; border:none ;;margin-left: -5px;">
+
+
+  <div class="table-5" style="display:flex;margin-top:9px;margin-bottom: 9px;z-index:1;">
+    <div style="margin-right:119px ;">2021</div>
+    <div style="margin-right:182px ;">97%</div>
+    <div style="margin-right:134px ;">28</div>
+    <div style="margin-right:130px ;">5.5</div>
+  <div>215</div>
+  </div>
+  <!-- table-5div -->
+    <div class="table-5div" style="width:803px;height:49px;background-color: rgb(238, 255, 250);position:absolute;top:229.5px;left:-5px;display:none;"></div> 
+  <hr class="table-6hr" style="width:803px ;height:0.8px ;background-color:rgb(217, 216, 216) ; ; border:none ;;margin-left: -5px;">
+  
+  
+  
+  <div  class="table-6"style="display:flex;margin-top:9px;margin-bottom: 9px;z-index:1;">
+    <div style="margin-right:119px ;">2020</div>
+    <div style="margin-right:182px ;">96%</div>
+    <div style="margin-right:134px ;">28</div>
+    <div style="margin-right:130px ;">4.5</div>
+  <div>195</div> 
+  </div>
+  <!-- table-6div -->
+  <div class="table-6div" style="width:803px;height:50px;background-color: rgb(249, 249, 249);position:absolute;top:279.5px;left:-5px;"></div>
+<hr  class="table-7hr"style="width:803px ;height:0.8px ;background-color:rgb(217, 216, 216) ; ; border:none ;;margin-left: -5px;">
+
+
+  <div class="table-7" style="display:flex;margin-top:9px;margin-bottom: 9px;z-index:1;">
+    <div style="margin-right:119px ;">2019</div>
+    <div style="margin-right:182px ;">96%</div>
+    <div style="margin-right:134px ;">28</div>
+    <div style="margin-right:130px ;">3.9</div>
+  <div>189</div>
+</div>
+<!-- table-7div -->
+    <div class="table-7div" style="width:803px;height:50px;background-color: rgb(238, 255, 250);position:absolute;top:330px;left:-5px;display:none;"></div> 
+<hr style="width:803px ;height:0.8px ;background-color:rgb(217, 216, 216) ; ; border:none ;;margin-left: -5px;">
+
+</div>
+
+<!-- images-chart  -->
+<div style="margin-top: 50px;margin-left:190px ;">
+ <img src="images/NoofCompanies.webp" alt="" width=450px; height=450px;>
+ <img src="images/TotalOffers.webp" alt="" width=450px; height=450px;>
+</div>
+
+<!-- the end -->
+ <div class="footer-section">
+<pre style="margin-left: 3px;font-size:15px">About  |  Study  |  Admissions  |  Research  |  Placements</pre>
+  <img  style="margin-top:-30px;margin-bottom: -50px;"src="images/footercollegelogo3.png" width="200px" height="180px">
+  <!-- ENQUIRIES -->
+  <table class="contact-table">
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">Enquiries</td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;color:white;" class="label">Admissions</td>
+    </tr>
+    <tr>
+      <td class="label">Mobile</td>
+      <td class="colon">:</td>
+      <td class="value">+91 75 5032 6387</td>
+    </tr>
+    <tr>
+      <td class="label">E-mail</td>
+      <td class="colon">:</td>
+      <td class="value">admissions@sct.edu.in</td>
+    </tr>
+  <!-- </table> -->
+
+  <!-- GENERAL -->
+  <!-- <table class="contact-table"> -->
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">General</td>
+    </tr>
+    <tr>
+      <td class="label">Email</td>
+      <td class="colon">:</td>
+      <td class="value">info@sct.edu.in</td>
+    </tr>
+    <!-- <tr>
+      <td class="label">Website</td>
+      <td class="colon">:</td>
+      <td class="value">www.sct.edu.in</td>
+    </tr> -->
+   <!-- </table> -->
+
+  <!-- CONTACT DETAILS -->
+  <!-- <table class="contact-table"> -->
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">Contact Details</td>
+    </tr>
+    <tr>
+      <td class="label">College</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2661111</td>
+    </tr>
+    <tr>
+      <td class="label">Fax</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2669411</td>
+    </tr>
+    <tr>
+      <td class="label">Placement</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2661511</td>
+    </tr>
+    <tr>
+      <td class="label">Principal</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2661151</td>
+    </tr>
+
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">Address</td>
+    </tr>
+    <tr>
+      <td colspan="3">Sashvi Campus,Saravanampatti,<br>
+        Chinnavedampatti (Post), Coimbatore-<br>
+        641049, Tamilnadu.</td>
+    </tr>
+  </table>
+  <div class="vertical-line">
+</div>
+
+<div class="Explore">
+
+ <h2 style="font-size:19px;color:white;">Explore</h2>
+
+Approval Letters<br>
+AICTE Recommended Books for Engg <br>Programmes<br>
+ARIIA 2022 report<br>
+Financial Statements<br>
+Higher Education Policy<br>
+HR Policy<br>
+IQAC<br>
+KCT Virtual Tour<br>
+Mandatory Disclosure<br>
+Non - Statutory committees<br>
+NIRF<br>
+RTI<br>
+Statutory committees<br>
+Undertaking
+</div>
+
+<div class="QuickLinks" >
+<h2 style="font-size:19px;color:white;">Quick Links</h2>
+AICTE - Feedback</br>
+Apply for WES/ Transcript & Student <br>Verification / Genuineness Verification</br>
+Anti-Ragging</br>
+Grievance Redressal Portal</br>
+Internal Complaints and Women<br> Empowerment Committee</br>
+Smartapps</br>
+Social Impact Report (2023-24)</br>
+Refund Policy</br>
+Privacy Policy
+</div>
+
+<div class="ProfessionalChapters">
+<h2 style="font-size:19px;color:white;">Professional Chapters</h2>
+ACM Student Chapter
+</div>
+
+<div class="Academics">
+  <h2 style="font-size:19px;color:white;">Academics</h2>
+  Academic Regulations</br>
+Academic Calendar</br>
+Annual Report</br>
+CoE Corner</br>
+Learning Augmented</br>
+Strategic Plan
+</div>
+
+<div class="Followuson">
+  <h2 style="font-size:19px;color:white;">Follow us on</h2>
+  <div class="followuson-images">
+    <img style="padding-right:18px;" src="images/coloredfacebook.webp" alt="facebook"  width=22px height=22px>
+    <img style="padding-right:18px;" src="images/coloredinstagram.webp" alt="instagram" width=22px height=22px>
+    
+    <img style="padding-right:18px;" src="images/coloredtwitter2.webp" alt="twitter" width=24px height=24px>
+    <img style="padding-right:18px;" src="images/coloredlinked.webp" alt="linkedin" width=22px height=22px>
+    <img style="padding-right:18px;"  src="images/coloredyoutube4.webp" alt="you tube" width=27px height=27px>
+   </div>
+</div>
+
+</div>
+<div class="copyright">
+Copyright © 2025 SCT. All Rights Reserved
+</div>
+
+<script>
+function toggleSection(sectionElement) {
+  // const plus = sectionElement.querySelector('.plus');
+  // const verticalBar = plus.querySelector('.vertical');
+  const content = sectionElement.nextElementSibling;//Finds the <div> immediately after the .Aboutceed (that’s the hidden content area).
+
+
+
+  // Toggle the content
+  if (content.style.display === "none" || content.style.display === "") {
+    content.style.display = "block";
+    //verticalBar.style.display = "none"; // turn plus into minus
+  } else {
+    content.style.display = "none";
+    //verticalBar.style.display = "block"; // turn minus back to plus
+  }
+}
+
+// CIRCLE POP-UP INDICATORS CONTROL
+let currentIndex = 0;
+const circles = document.querySelectorAll('.image-indicators .circle');
+
+function updateCircle() {
+  circles.forEach((circle, index) => {
+    if (index === currentIndex) {
+      circle.classList.add('active');
+    } else {
+      circle.classList.remove('active');
+    }
+  });
+}
+
+setInterval(() => {
+  if (currentIndex === 0) {
+    currentIndex = 1;
+  } else {
+    currentIndex = 0;
+  }
+  updateCircle();
+}, 9080); // every 9080 milli seconds
+
+updateCircle();
+
+</script>
+
+
+</body>
+</html>
