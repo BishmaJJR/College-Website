@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="images/logoonly1.png" sizes="128x128" type="image/x-icon" >
+<title>Sashvi College Of Technology</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Container for the entire header */
+.header {
+    display: flex;
+    align-items: center; /* vertical alignment of all items */
+    gap: 15px;           /* horizontal spacing between items */
+    padding: 10px 20px;
+}
+
+/* College logo */
+.header #collegelogo {
+    width: 330px;
+    margin-left:-50px;
+    margin-top:-70PX;
+margin-right:300px;
+}
+
+.side-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Text elements */
+.side-menu .text {
+    font-size: 17px;
+    color:grey;
+}
+
+.side-menu #TNEA {
+    font-size: 17px;
+    color: #15263d;
+    margin-right:10px;
+    margin-left:7px;
+}
+
+
+
+/* Social icons container */
+.side-menu .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 7px; /* spacing between icons */
+}
+
+/* Individual social icons */
+.side-menu .social-icons img {
+    width: 18px;
+    height: 18px;
+}
+
+.side-menu .social-icons{
+    margin-right: 10px;;
+}
+
+/* Links */
+.side-menu a {
+    text-decoration: none;
+    color: grey;
+    font-size: 17px;
+    margin-left: 5px;
+}
+
+/*2nd row*/
+.bgblue{
+    display:flex;
+    gap:100px;
+    justify-content:center;
+    box-sizing: border-box; 
+    margin-top: -50px;
+    background-color:#15263d; 
+    height:40px;
+    color:white;
+    padding: 11px 0;
+    position:relative;
+   
+}
+
+.menu-item:hover .menu-list{
+   display: flex;
+   /*display: none hides the menu so the page layout is clean.
+
+Hover triggers display: flex to show it.
+
+Absolute positioning ensures the menu appears visually over the page rather than taking up space in 
+the normal flow.*/
+
+    
+}
+
+.menu-item:hover{
+    text-decoration: underline;
+    text-decoration-color: aquamarine;
+   text-decoration-thickness: 2px;
+   text-underline-offset:12px;
+   /*text-underline-offset controls the distance between the text and its underline.*/
+}
+
+.menu-item {
+   
+    cursor: pointer;
+
+}
+
+.menu-list {
+    display: none;               /* hidden by default */
+    flex-wrap: wrap;  
+    position:absolute;
+      right:0;            
+    
+      top:100%;
+    /*top: 0 → places the element’s top edge aligned with the parent’s top edge.
+
+top: 100% → places the element’s top edge aligned with the parent’s bottom edge.*/
+    width:100vw;
+    left:0;
+                   /*width: 66.9vw; */              
+    background-color: #e3e3e3; 
+    color: #15263d;
+    
+    gap: 20px;
+    box-sizing: border-box;
+     padding: 20px 50px;  
+    z-index: 1000;  
+    justify-content: center;
+    
+}
+
+ .column{
+ border-right: 0.2px solid #15263d; 
+ padding-right: 50px;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+ li{
+    line-height:25px;
+   
+} 
+
+.column h4{
+   
+    padding-bottom:-10px;
+}
+
+.bgblue .menu-item  a{
+    color:white;
+    text-decoration: none;
+}
+
+/*media queries*/
+
+
+
+/* HAMBURGER ICON */
+.hamburger {
+  display: none;
+   flex-direction: column;
+  cursor: pointer;
+  gap: 5px; 
+}
+
+
+
+/* RESPONSIVE — show hamburger only on small screens */
+@media (max-width: 768px) {
+  /* Hide text, links, and icons in small screens */
+  .side-menu .text,
+  .side-menu .social-icons,
+  .side-menu a {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Show the hamburger icon */
+  .hamburger {
+    display: flex;
+    position: absolute;   /* free placement */
+
+   /* Positioned relative to nearest “positioned ancestor” (relative, absolute, fixed, sticky).
+If no ancestor is positioned, it defaults to the <html> / body (effectively the viewport).
+Result in your code:
+.header is static → nearest positioned ancestor doesn’t exist → hamburger is positioned relative to page/viewport.
+top: 20px; right: 20px → 20px from top-right of the page, not the header.*/
+    top: 25px;            /* adjust vertical alignment */
+    right: 25px;          /* place near right edge */
+    z-index: 10000;        /* stay above everything */
+   } 
+
+  /* Optionally adjust logo for small screens */
+  /* .header img#collegelogo {
+    width: 250px;
+    margin-left: 10px;
+    margin-top: -40px;
+    margin-right: 0;
+  } */
+
+  /* Adjust blue navigation bar spacing */
+  .bgblue {
+    gap: 40px;
+  } 
+
+   .side-menu {
+  position: fixed;
+   top: 0; 
+  right: -100%;
+  width: 280px;
+  height: 80%;
+  background-color: white;
+   box-shadow: -2px 0 10px rgba(0,0,0,0.2); 
+   /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+  display: flex;
+  flex-direction: column; 
+  align-items:center;   /*🔹 align text to left */
+  justify-content: center; /* 🔹 center vertically */
+  gap: 15px;             /* 🔹 add spacing between items */
+  padding: 40px 25px;
+  box-sizing: border-box;
+  /* By default, CSS uses box-sizing: content-box, which means:
+The width/height you set applies only to the content.
+Padding and border are added outside of that width/height. */
+ transition: right 0.3s ease;
+
+  z-index: 9999; /*z-index controls the stacking order of elements on the page. */
+} 
+
+ .hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #15263d;
+  border-radius: 2px;
+} 
+
+/* SIDE MENU (SLIDE FROM RIGHT) */
+
+
+ .side-menu.active {
+  right: 0;
+}
+
+.side-menu .text,.side-menu a {
+  font-size: 17px;
+  color: #15263d;
+  margin-bottom: 10px;
+}
+
+.side-menu .social-icons {
+  display: flex;
+  gap: 12px;
+  margin: 15px 0; 
+  justify-content: center; /* 🔹 center social icons */
+ }
+
+.side-menu .social-icons img {
+  width: 20px;
+  height: 20px;
+}
+
+.side-menu a {
+  color: #15263d;
+  text-decoration: none;
+  font-size: 17px;
+  margin: 5px 0;
+}
+} 
+
+/*FULL SIZED COLLEGE IMAGE ROW STLYING*/
+.fullSizedImage{
+  position:relative;
+}
+
+.Apply-now  {
+  position:fixed;
+  left:1181px;
+  top:290px;
+  /* width:200px; */
+ transform:rotate(270deg);
+  z-index: 2;
+  
+  
+}
+
+.fullSizedImage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* makes image dim 
+  0.1 to 0.9 transparent ,1->opaque*/
+  z-index: 1;
+
+/* 
+Overlay explanation:
+- top:0; left:0 → starts from top-left of parent
+- width/height:100% → covers full image area
+- z-index:1 → sits above image but below text
+- rgba(...) → adds transparent black dim effect
+*/
+}
+
+
+.welcome{
+  position:absolute;
+   top:165px;
+  left:500px; 
+  letter-spacing: 10PX;
+  z-index: 2;
+}
+
+ .welcome .welcomesashvi{
+  font-size: 80px; 
+  color:white;
+  position:absolute;
+   top:-20px;
+  left:-30px;
+  /*text-decoration-thickness: 3px;
+  text-underline-offset: 10px;*/
+ 
+} 
+
+.welcome hr{
+  
+  background-color: white;
+  height:3px;
+  width:250px;
+  border:none;
+  position:absolute;
+   top:140px;
+  left:25px;
+}
+
+/*programmes*/
+
+.programmes{
+  margin-top:42px ;
+  
+}
+
+.programmes .programmespara{
+  margin-left: 130px;
+   margin-right: 130px;
+   font-size:17px;
+   line-height: 32px;
+   color:#15263d;
+   margin-bottom: 40px;
+   
+}
+
+/*scrollable contents*/
+/* Scrollable container buttons */
+.scrollablecontent::-webkit-scrollbar {
+  display: none; /* hides scrollbar for a clean look */
+}
+
+ .scrollablecontent > div {
+  scroll-snap-align: start; /* each card snaps neatly */
+ 
+ }  
+
+ .scroll-container {
+   position: relative;
+  /* width: 100%; */
+   overflow-x: auto;
+  max-width: 1100px; 
+   margin: 0 auto;     
+  display: flex;
+   /* scroll-snap-type: x mandatory;  */
+  /*scroll-behavior: smooth; */
+  /* align-items: center;
+  justify-content: center;  */
+  
+} 
+
+/* Scroll arrows */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #15263d;
+  color: white;
+  border: none;
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.scroll-btn:hover {
+  background-color: rgb(113, 201, 172);
+}
+
+.scroll-btn.left {
+  left: 1px;
+}
+
+.scroll-btn.right {
+  right: 20px;
+}
+
+
+
+
+.scrollablecontent{
+   display: flex;
+  flex-direction: row; 
+ /* justify-content: space-evenly; */
+ overflow-x: auto; /* enables horizontal scrolling */
+  padding: 20px;
+ scroll-snap-type: x mandatory;/* helps in card snapping */
+ gap: 25px; /* same gap you used */
+  
+}
+.scrollablecontent .AeronauticalEngineering{
+  display:flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px solid #fff;  /* white border instead of black */
+  background-color: #fff;  /* white background like cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  box-sizing:border-box;
+  width:310px;
+  height:445px;
+  margin-left: 120px;
+  /* padding-left: 10px; */
+   padding-right: 10px;
+   /* padding-top: 1px; */
+  margin-bottom:40px;
+  
+
+  
+}
+
+.scrollablecontent .ArtificialIntelligence{
+  display:flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px solid #fff;  /* white border instead of black */
+  background-color: #fff;  /* white background like cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  box-sizing:border-box;
+  width:310px;
+  height:445px;
+  margin-left: 35px;
+  /* padding-left: 10px; */
+   padding-right: 10px;
+   /* padding-top: 1px; */
+  margin-bottom:40px;
+  
+
+  
+}
+
+.scrollablecontent .AutomobileEngineering{
+  display:flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px solid #fff;  /* white border instead of black */
+  background-color: #fff;  /* white background like cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  box-sizing:border-box;
+  width:310px;
+  height:445px;
+  margin-left: 35px;
+  /* padding-left: 10px; */
+   padding-right: 10px;
+   /* padding-top: 1px; */
+  margin-bottom:40px;
+  
+
+  
+}
+
+.scrollablecontent .Biotechnology{
+  display:flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px solid #fff;  /* white border instead of black */
+  background-color: #fff;  /* white background like cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  box-sizing:border-box;
+  width:310px;
+  height:445px;
+  margin-left: 35px;
+  /* padding-left: 10px; */
+   padding-right: 10px;
+   /* padding-top: 1px; */
+  margin-bottom:40px;
+  
+
+  
+}
+.scrollablecontent .CivilEngineering{
+  display:flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px solid #fff;  /* white border instead of black */
+  background-color: #fff;  /* white background like cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  box-sizing:border-box;
+  width:310px;
+  height:445px;
+  margin-left: 35px;
+  /* padding-left: 10px; */
+   padding-right: 10px;
+   /* padding-top: 1px; */
+  margin-bottom:40px;
+  
+
+  
+}
+.scrollablecontent .ElectricalEngineering{
+  display:flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: 1px solid #fff;  /* white border instead of black */
+  background-color: #fff;  /* white background like cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  box-sizing:border-box;
+  width:310px;
+  height:445px;
+  margin-left: 35px;
+  /* padding-left: 10px; */
+   padding-right: 10px;
+   /* padding-top: 1px; */
+  margin-bottom:40px;
+  
+
+  
+}
+
+/*div container*/
+.divcontent1{
+  /* margin-bottom:100px;  */
+   background-color: #254674;
+  color:white;
+  font-size: medium;
+  width:185px;
+  height:190px;
+  
+}
+
+.divcontent{
+  display:flex;
+  flex-direction:row;
+}
+
+.divcontents{
+  display:flex;
+  flex-direction:row;
+}
+
+.divcontent2, .divcontent6, .divcontent8, .divcontent10{
+   
+   background-color: #1e365b;
+  color:white;
+  font-size: medium;
+  width:185px;
+  height:190px;
+  
+}
+
+.divcontent3, .divcontent9, .divcontent7{
+  
+   background-color: #254674;
+  color:white;
+  font-size: medium;
+  width:185px;
+  height:190px;
+   /* display: flex;
+  flex-direction:column;
+   justify-content: center; 
+   align-items: center;    */
+
+  
+}
+
+.divcontent4{
+  
+   background-color: #1e365b;
+  color:white;
+  font-size: medium;
+  width:185px;
+  height:190px;
+  
+}
+
+.divcontent5{
+   
+   background-color: #254674;
+  color:white;
+  font-size: medium;
+  width:185px;
+  height:190px;
+  
+}
+
+ .no{
+   padding-top:40px;
+  /*padding-left:48px;
+   padding-right:46px; */
+  color:aquamarine;
+  font-size:40px;
+  text-align: center;
+  font-weight:bold;
+  
+  
+  
+}
+
+ .text{
+   padding-left:5px;
+  padding-right:5px;  
+  text-align: center;
+  line-height:30px;
+  font-size:15px;
+  
+  
+}
+
+
+.div{
+  position:relative;
+  
+}
+
+.collegeimage{
+  position:absolute;
+  left:925px;
+  top:0;
+
+}
+
+/*the 4 boxes*/
+ .twoboxes{
+  display:flex;
+  flex-direction:row;
+  box-sizing: border-box;
+}
+
+ .thelasttwobox{
+  display:flex;
+  flex-direction:row;
+  box-sizing: border-box;
+}
+
+.frstbox{
+width:50%;
+height:700px;
+background-color:rgb(239, 239, 239);
+color:#15263d;
+font-size:30px;
+font-weight:bold;
+ padding-left:120px; 
+padding-top:90px;
+box-sizing: border-box;
+position:relative;
+} 
+
+.Events{
+  position:absolute;
+  left:400px;
+  top:580px;
+}
+
+ .secondbox{
+width:50%;
+height:700px;
+background-color:white;
+color:#15263d;
+font-size:30px;
+font-weight:bold ;
+padding-left:70px; 
+padding-top:90px;
+box-sizing: border-box;
+position:relative;
+}
+
+.Announcements{
+  position:absolute;
+  left:240px;
+  top:580px;
+}
+
+.thirdbox{
+width:50%;
+height:700px;
+background-color:rgb(142, 216, 190);
+color:#15263d;
+ font-size:15px; 
+/* font-weight:bold; */
+ padding-left:40px; 
+ padding-right:40px; 
+padding-top:10px;
+box-sizing: border-box;
+text-align: justify;
+} 
+
+.fourthbox{
+width:50%;
+height:700px;
+background-position: center;
+background-size:cover ;
+box-sizing: border-box;
+position:relative;
+
+}
+
+.fourthbox::after{
+  z-index:1;
+  width:100% ;
+  height:100%;
+  background-color:rgb(255, 255, 255,0.9);
+  top:0;
+  left:0;
+  position: absolute;
+   content:""; 
+   /*content:"" just creates the after-element, and background-color only fills it — but it becomes visible only when the 
+   after-element has size.*/
+}
+
+
+
+.playbutton{
+position:absolute;
+top:220px;
+left:240px;
+z-index:2;
+}
+
+
+
+.date{
+  width:45px;
+  height:50px ;
+  background-color:#15263d ;
+  color:white;
+  padding:10px;
+  text-align:center;
+} 
+
+.animation{
+height: 200px; /* visible height area */
+  overflow: hidden;
+  position: relative;
+  
+  /* border: 2px solid #f4b400; */
+  padding-top:170px; 
+  
+ } 
+
+.animationdisplay{
+   display: flex;
+  flex-direction: column;
+ /* animation: moveUp 6s linear infinite;/*This means move the content 100% below its normal 
+  position (off-screen at the bottom).This means move the content 100% above its 
+  normal position (off-screen at the top).*/
+  animation: scrollUp 6s linear infinite;
+ } 
+
+ @keyframes scrollUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+} 
+
+/*the end*/
+
+
+.footer-section{
+background-color:#162e50;
+padding-top:45px;
+padding-left:15px;
+color:lightgray;
+position:relative;
+height:610px;
+
+
+
+}
+
+.footer-section table{
+  line-height: 25px;
+}
+
+
+ /* .footer-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 30px 0;
+} */
+
+
+.vertical-line{
+  width:0.5px;
+  transform: scaleX(0.9); /* makes it ~0.3px thin so 0.3px is very thin than 0.9px */
+  height:510px;
+  background-color:rgb(100, 195, 163);
+  position:absolute;
+  left:320px;
+  top:115px;
+}
+
+.contact-table .label{
+  padding-right: 0.1px;
+}
+
+.Explore{
+  position:absolute;
+  left:335px;
+  top:110px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.QuickLinks{
+  position:absolute;
+  left:650px;
+  top:110px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.ProfessionalChapters{
+  position:absolute;
+  left:650px;
+  top:450px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.Academics{
+  position:absolute;
+  left:960px;
+  top:110px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.Followuson{
+  position:absolute;
+  left:960px;
+  top:380px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.Followuson .followuson-images{
+display: flex;
+flex-direction: row;
+}
+/*for images to align horizontally give flex with flex direction row and padding right directly within the image tag using inline */
+
+.copyright{
+  background-color: #111f33;
+   height:43px;
+  width:100%; 
+ text-align: center;
+ color:rgb(136, 136, 136);
+ padding-top:24px;
+ 
+}
+
+/*WHEN CLICKING ON "ABOUT" SHOULD HOVER THE DROPDOWN LIST */
+.abt-dropdown{
+  position:relative;
+  padding-bottom: 220px; /* slightly larger than dropdown height */
+  
+  
+
+}
+
+.dropdown-menu{
+  position:absolute;
+   z-index:9999;
+  left: -70px;
+  top:13px;
+  width:190px;
+  height:200px;
+  background-color: #e3e3e3; 
+  
+  padding:0;
+  
+     /* padding-left:30px;;
+   padding-right:14px;;   */
+   /* padding-top:15px;;
+   padding-bottom:15px;;
+    */
+  
+ 
+}
+
+
+
+ .abt-dropdown:hover .dropdown-menu{
+display:block !important;
+
+}
+.dropdown-menu li a{
+  display: flex;             /* use flex inside <a> */
+  justify-content: flex-start;   /* horizontal center */
+  align-items: flex-start;       /* vertical center */
+   padding-left:30px;;
+   padding-right:14px;; 
+  
+  
+}
+
+.dropdown-menu li :hover {
+    background-color: aquamarine;
+    
+  
+    
+    
+    
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="header">
+    <img id="collegelogo" src="F:\Full stack course\college website\images\collegelogo.png" alt="college logo">
+    
+    <!-- Hamburger button -->
+ <div class="hamburger" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+
+</div> 
+
+<!-- SIDE MENU  -->
+<div class="side-menu" id="sideMenu">
+  <div class="text">SII (Study in India)</div>
+  <div class="text">TNEA Code: 3712</div>
+
+  <div class="social-icons">
+    <img src="images/youtubeicon.png" alt="youtube">
+    <img src="images/facebooklogo2.png" alt="facebook">
+    <img src="images/headerinstagram3.webp" alt="instagram">
+    <img src="images/phonelogo.png" alt="phone">
+  </div>
+
+  <div class="text">Contact</div>
+  <a href="website.html">Home</a>
+  </div>  
+    </div>
+
+<div class="bgblue">
+        <div class="menu-item abt-dropdown"><a href="#">About</a>
+          
+            <ul class="dropdown-menu" type="none" style="display:none">
+
+       <li><a href="institution.html" style="color:black; line-height:40px;">Institution</a></li>
+        <li><a href="visionandmission.html" style=" color: #15263d;line-height:40px;">Vision and Mission</a></li>
+        <li><a href="#" style=" color: #15263d;line-height:40px;">Management</a></li>
+        <li><a href="#" style=" color: #15263d;line-height:40px;">Principal</a></li>
+        <li><a href="#" style=" color: #15263d;line-height:40px;">Events</a></li>
+      </ul>
+      
+
+        </div>
+        
+        <div class="menu-item">Study
+            <div class="menu-list">
+            <div class="column">
+                <ul type="none">
+                <h4>Programmes</h4>
+                
+                    <li>Undergraduate</li>
+                    <li>Postgraduate</li>
+                    <li>Research</li>
+
+                </ul>
+            </div>
+            <div  class="column">
+                <ul type="none">
+                <h4>Hands-on Learning</h4>
+               
+                    <li>Fluke</li>
+                    <li>Yokogawa</li>
+                    <li>Bosch</li>
+                    <li>Siemens</li>
+
+                </ul>
+            </div>
+
+            <div class="column">
+                <ul type="none">
+                <h4>Academic Excellence</h4>
+                
+                <li>OBE</li>
+                <li>FCLF</li>
+                <li>KLDA</li>
+                <li>CLED</li></ul>
+            </div>
+
+             <div  >
+                            <ul type="none">
+                            <h4>Academic Innovation</h4>
+               
+                <li>Prototyping</li>
+                <li>Innovation Practicum</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+        <div class="menu-item"><a href="admission.html">Admissions</a></div>
+
+        <div class="menu-item">Research</div>
+        <div class="menu-item"><a style="text-decoration:none;"href="placements.html">Placements</a></div>
+    </div>
+    <div class="fullSizedImage">
+   <img  src="images/collegefullsized.webp" alt="college image" width="100%" height="520vh"> 
+   <DIV CLASS="welcome">
+   <p style="font-size: 30px; color:white">WELCOME TO</p>
+   <p class="welcomesashvi">SASHVI</p>
+   <hr>
+</DIV>
+
+<div class="Apply-now">
+  
+  <button style="height:40px;width:120px;background-color:#15263d;border:none;"><a style="font-size:17px;color:white;text-decoration: none; " href="admission.html" >Apply Now</a></button>
+  
+</div>
+   </div>
+
+   <!--Programmes-->
+   <div class="programmes">
+    <h1 style="font-size:30px; text-align:center;color:#15263d;">Programmes</h1>
+    <p  class="programmespara"style="text-align:justify">Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+   </div>
+
+   <!--scrollable contents-->
+   <!--scrollable contents-->
+<div class="scroll-container">
+  <button class="scroll-btn left" onclick="scrollLeft()">&#10094;</button>
+
+  <div class="scrollablecontent" id="scrollable">
+    
+    <div class="AeronauticalEngineering">
+       <img style="width:24.2vw ; height:30vh;z-index:1;object-fit: cover;" src="images/aeronautical.webp" alt="Aeronautical Images"> 
+      <h2 style="font-size: 20px; margin-bottom:2px; color:#15263d;padding-left: 10px;">Aeronautical Engineering</h2>
+     <p style="line-height: 25px; font-size:14.5px;text-align:justify;color:#15263d; padding-left: 10px;"> The Department of Aeronautical Engineering with well qualified and experienced tea of faculty members with varied specializations in Aeronautical Engineering stream is committed to provide quality education by innovative teaching-learning processes. <a href="#" style="color:rgb(113, 201, 172);">Know More...</a></p>
+    </div>
+
+     <div class="ArtificialIntelligence">
+       <img style="width:24.2vw ; height:30vh;z-index:1;object-fit: cover;" src="images/artificialintelligence.webp" alt="Aeronautical Images"> 
+      <h2 style="font-size: 20px; margin-bottom:2px; color:#15263d;padding-left: 10px;">Artificial Intelligence & Data Science</h2>
+     <p style="line-height: 25px; font-size:14.5px;text-align:justify;color:#15263d; padding-left: 10px; ">In the world of dramatic and accelerating change in the streams of technology,economy,culture,environment,and social dimensions,the role of an engineer must be expanded to include the possibilities of serving as disruptive innovators,busin... <a href="#" style="color:rgb(113, 201, 172);">Know More...</a></p>
+    </div>
+    <div class="AutomobileEngineering">
+       <img style="width:24.2vw ; height:30vh;z-index:1;object-fit: cover;" src="images/automobile.webp" alt="Aeronautical Images"> 
+      <h2 style="font-size: 20px; margin-bottom:2px; color:#15263d;padding-left: 10px;">Automobile Engineering</h2>
+     <p style="line-height: 25px; font-size:14.5px;text-align:justify;color:#15263d; padding-left: 10px; ">The department of Automobile Engineering was established in the year 2011 with a mission to prepare highly competent Automobile Engineers for global automotive industries through innovative,industry-oriented curriculum,intensive practical training,and industry exposure to the students in the... <a href="#" style="color:rgb(113, 201, 172);">Know More...</a></p>
+    </div>
+    <div class="Biotechnology">
+       <img style="width:24.2vw ; height:30vh;z-index:1;object-fit: cover;" src="images/automobile.webp" alt="Aeronautical Images"> 
+      <h2 style="font-size: 20px; margin-bottom:2px; color:#15263d;padding-left: 10px;">Biotechnology</h2>
+     <p style="line-height: 25px; font-size:14.5px;text-align:justify;color:#15263d; padding-left: 10px; ">With technology pervading through our veins and arteries,it is high time we get to know about them with an engineering perspective. So,KCT stated the Department of BioTechnology in 2002 and has been offering B.Tech., Biotechnology, M.Tech.,Biotechnology and Ph.D.,(Full/Part-time).Being a d...  <a href="#" style="color:rgb(113, 201, 172);">Know More...</a></p>
+    </div>
+
+    <div class="CivilEngineering">
+       <img style="width:24.2vw ; height:30vh;z-index:1;object-fit: cover;" src="images/automobile.webp" alt="Aeronautical Images"> 
+      <h2 style="font-size: 20px; margin-bottom:2px; color:#15263d;padding-left: 10px;">Civil Engineering</h2>
+     <p style="line-height: 25px; font-size:14.5px;text-align:justify;color:#15263d; padding-left: 10px; ">Department of Civil Engineering is one of the earliest Engineering Departiments started in Sashvi College of Technology. The department specializes in seven most sought after domains of Civil Engineering which include Structural Engineering, Environmantal and Water Resources, Construction M... <a href="#" style="color:rgb(113, 201, 172);">Know More...</a></p>
+    </div>
+
+    <div class="ElectricalEngineering">
+       <img style="width:24.2vw ; height:30vh;z-index:1;object-fit: cover;" src="images/automobile.webp" alt="Aeronautical Images"> 
+      <h2 style="font-size: 20px; margin-bottom:2px; color:#15263d;padding-left: 10px;">Electrical and Electronics Engineering</h2>
+     <p style="line-height: 25px; font-size:14.5px;text-align:justify;color:#15263d; padding-left: 10px; ">The Department of Electrical and Electronics Engineering established in the year 1984 offers One Bachelor Programme and two Post graduate Programmes in the stream of Power Electronics and Drives and Embedded Systems Technologies respectively.  <a href="#" style="color:rgb(113, 201, 172);">Know More...</a></p>
+    </div>
+
+   </div>
+   <button class="scroll-btn right" onclick="scrollRight()">&#10095;</button>
+</div> <!-- closing of scroll-container -->
+
+<!--div contents-->
+<div class="div">
+<div class="divcontent">
+  <div class="divcontent1">
+<div class="no">41<br></div>
+<div class="text">
+  Years of Academic Excellence
+</div>
+</div>
+
+
+<div class="divcontent2">
+<div class="no">216<br></div>
+<div class="text">
+  Faculty with PhD and 96 pursuring PhD
+</div>
+</div>
+
+<div class="divcontent3">
+<div class="no">165<br></div>
+<div class="text">
+  Labs
+</div>
+</div>
+
+<div class="divcontent4">
+<div class="no">40<br></div>
+<div class="text">
+  UG, PG & Research Programmes
+</div>
+</div>
+
+<div class="divcontent5">
+<div class="no">1300+<br></div>
+<div class="text">
+  annual scholarship awards
+</div>
+</div>
+
+</div>
+<div class="collegeimage">
+<img src="images/collegefullsized.webp" alt="college image"  style="margin-left:0px;"width="500px" height="380px">
+</div>
+
+<div class="divcontents">
+  <div class="divcontent6">
+    <div class="no">30000+</div>
+    <div class="text">Alumni across the Globe</div>
+  </div>
+
+  <div class="divcontent7">
+    <div class="no">13</div>
+    <div class="text">MoUs with International Universities </div>
+  </div>
+
+  <div class="divcontent8">
+    <div class="no">10</div>
+    <div class="text">Government and Industry sponsored Excellence Centres</div>
+  </div>
+
+  <div class="divcontent9">
+    <div class="no">616</div>
+    <div class="text">Recruitors</div>
+  </div>
+
+  <div class="divcontent10">
+    <div class="no">71</div>
+    <div class="text">Patents Filed</div>
+  </div>
+</div>
+
+</div>
+
+ <div class="twoboxes">
+
+<div class="frstbox">
+Events
+<pre style="font-size:15px;color:black;font-weight:normal; text-align:start;line-height:24px;">The vibrant space showcasing a diverse spectrum of 
+happenings carried out across the academic year</pre>
+ <div class="animation">
+  <div class="animationdisplay">
+<div class="date" style="font-size:28px;font-weight: normal;">15<pre style="font-size:12px;line-height: 1px;">Oct 2025</pre></div>
+<pre style="font-size:18px;font-weight: bold;line-height: 30px;">INTERNATIONAL SYMPOSIUM ON ONE
+HEALTH</pre>
+<P style="font-size:18px;font-weight:normal;line-height: 7px;">Venue : SASHVI INSTITUTIONS</P>
+
+
+</div>
+</div> 
+
+<button  class="Events"style="border-radius:30px;color:white;background-color:#15263d;font-weight:bold;padding:17px;font-size:18px;height:60px;width:180px;">MORE EVENTS</button>
+</div>
+
+<div class="secondbox">
+Announcements
+<pre style="font-size:15px;color:black;font-weight: normal;text-align:start; line-height:24px; ">The central source for updates on forthcoming events, 
+fresh initiatives, resources, and important notices.</pre>
+
+ <div class="animation">
+  <div class="animationdisplay">
+
+<p style="font-size:18px;font-weight: bold;line-height: 30px;text-align: start;">TENDER NOTICE FOR SUPPLY,INSTALLATION &<br>COMMISSIONING OF EQUIPMENT FOR AICTE
+ <br> IDEA LAB</p><hr>
+
+  <pre style="font-size:18px;font-weight: bold;line-height: 30px;">CAPGEMINI BRAND QUEST 2025</pre><hr>
+  <pre style="font-size:18px;font-weight: bold;line-height: 30px;">ESE TIMETABLE FOR PH.D. COURSE</pre><hr>
+  <pre style="font-size:18px;font-weight: bold;line-height: 30px;text-align: start;">ESE RESCHEDULED AND MINOR SPECIALIZATION<br>TIMETABLE FOR B.E/B.TECH DEGREE<br>PROGRAMMES-APRIL/MAY 2025</pre><hr>
+  <pre style="font-size:18px;font-weight: bold;line-height: 30px;">CAPGEMINI BRAND QUEST 2025</pre><hr>
+
+  
+
+</div>
+</div> 
+<button class="Announcements" style="border-radius:30px;color:white;background-color:#15263d;font-weight:bold;padding:17px;font-size:18px;height:60px;width:270px;">MORE ANNOUNCEMENTS</button>
+
+ </div>
+</div>  
+
+<!-- last two boxes -->
+ <div class="thelasttwobox">
+  <div class="thirdbox">
+    <h1>The Vision to Shape Young Minds.</h1>
+    <p style="line-height: 33px;font-size:17px; ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+       
+       <p style="line-height: 33px;font-size:17px; ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+
+</p>
+
+  </div>
+  <div class="fourthbox">
+    <img   src="images/collegefullsized.webp" alt="college image" height=700px>
+    <img class="playbutton" src="images/playbutton5.png" alt="play button" width=140px height=140px>
+  </div>
+ </div>
+
+<!-- the end -->
+ <div class="footer-section">
+<pre style="margin-left: 3px;font-size:15px">About  |  Study  |  Admissions  |  Research  |  Placements</pre>
+  <img  style="margin-top:-30px;margin-bottom: -50px;"src="images/footercollegelogo3.png" width="200px" height="180px">
+  <!-- ENQUIRIES -->
+  <table class="contact-table">
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">Enquiries</td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;color:white;" class="label">Admissions</td>
+    </tr>
+    <tr>
+      <td class="label">Mobile</td>
+      <td class="colon">:</td>
+      <td class="value">+91 75 5032 6387</td>
+    </tr>
+    <tr>
+      <td class="label">E-mail</td>
+      <td class="colon">:</td>
+      <td class="value">admissions@sct.edu.in</td>
+    </tr>
+  <!-- </table> -->
+
+  <!-- GENERAL -->
+  <!-- <table class="contact-table"> -->
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">General</td>
+    </tr>
+    <tr>
+      <td class="label">Email</td>
+      <td class="colon">:</td>
+      <td class="value">info@sct.edu.in</td>
+    </tr>
+    <!-- <tr>
+      <td class="label">Website</td>
+      <td class="colon">:</td>
+      <td class="value">www.sct.edu.in</td>
+    </tr> -->
+   <!-- </table> -->
+
+  <!-- CONTACT DETAILS -->
+  <!-- <table class="contact-table"> -->
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">Contact Details</td>
+    </tr>
+    <tr>
+      <td class="label">College</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2661111</td>
+    </tr>
+    <tr>
+      <td class="label">Fax</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2669411</td>
+    </tr>
+    <tr>
+      <td class="label">Placement</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2661511</td>
+    </tr>
+    <tr>
+      <td class="label">Principal</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2661151</td>
+    </tr>
+
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">Address</td>
+    </tr>
+    <tr>
+      <td colspan="3">Sashvi Campus,Saravanampatti,<br>
+        Chinnavedampatti (Post), Coimbatore-<br>
+        641049, Tamilnadu.</td>
+    </tr>
+  </table>
+  <div class="vertical-line">
+</div>
+
+<div class="Explore">
+
+ <h2 style="font-size:19px;color:white;">Explore</h2>
+
+Approval Letters<br>
+AICTE Recommended Books for Engg <br>Programmes<br>
+ARIIA 2022 report<br>
+Financial Statements<br>
+Higher Education Policy<br>
+HR Policy<br>
+IQAC<br>
+KCT Virtual Tour<br>
+Mandatory Disclosure<br>
+Non - Statutory committees<br>
+NIRF<br>
+RTI<br>
+Statutory committees<br>
+Undertaking
+</div>
+
+<div class="QuickLinks" >
+<h2 style="font-size:19px;color:white;">Quick Links</h2>
+AICTE - Feedback</br>
+Apply for WES/ Transcript & Student <br>Verification / Genuineness Verification</br>
+Anti-Ragging</br>
+Grievance Redressal Portal</br>
+Internal Complaints and Women<br> Empowerment Committee</br>
+Smartapps</br>
+Social Impact Report (2023-24)</br>
+Refund Policy</br>
+Privacy Policy
+</div>
+
+<div class="ProfessionalChapters">
+<h2 style="font-size:19px;color:white;">Professional Chapters</h2>
+ACM Student Chapter
+</div>
+
+<div class="Academics">
+  <h2 style="font-size:19px;color:white;">Academics</h2>
+  Academic Regulations</br>
+Academic Calendar</br>
+Annual Report</br>
+CoE Corner</br>
+Learning Augmented</br>
+Strategic Plan
+</div>
+
+<div class="Followuson">
+  <h2 style="font-size:19px;color:white;">Follow us on</h2>
+  <div class="followuson-images">
+    <img style="padding-right:18px;" src="images/coloredfacebook.webp" alt="facebook"  width=22px height=22px>
+    <img style="padding-right:18px;" src="images/coloredinstagram.webp" alt="instagram" width=22px height=22px>
+    
+    <img style="padding-right:18px;" src="images/coloredtwitter2.webp" alt="twitter" width=24px height=24px>
+    <img style="padding-right:18px;" src="images/coloredlinked.webp" alt="linkedin" width=22px height=22px>
+    <img style="padding-right:18px;"  src="images/coloredyoutube4.webp" alt="you tube" width=27px height=27px>
+   </div>
+</div>
+
+</div>
+<div class="copyright">
+Copyright © 2025 SCT. All Rights Reserved
+</div>
+
+     <script>
+function toggleMenu() {
+  const menu = document.getElementById("sideMenu");
+  menu.classList.toggle("active");
+}
+
+
+window.onload = function () { /*soon after the page starts ,contents viewed*/
+  //Yes, function () { ... } in your code is a nameless function (also called anonymous function).
+  const scrollContainer = document.getElementById('scrollable');
+
+  //LEFT END (min = 0)  -----------------------------  RIGHT END (max = scrollWidth - clientWidth)
+  //Clicking right button biotechnology added,, clicking left button biotechnology removed
+
+  function scrollCardsLeft() {
+    const cardWidth = scrollContainer.querySelector('div').offsetWidth + 35;
+    const newScroll = Math.max(scrollContainer.scrollLeft - cardWidth,0);
+    scrollContainer.scrollTo({ left: newScroll, behavior: 'smooth' });
+  }
+
+  function scrollCardsRight() {
+    const cardWidth = scrollContainer.querySelector('div').offsetWidth + 35;
+    const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    const newScroll = Math.min(scrollContainer.scrollLeft + cardWidth, maxScroll);
+   //,maxscroll-- This is the maximum allowed value (the stopping point).
+    scrollContainer.scrollTo({ left: newScroll, behavior: 'smooth' });
+  }
+
+  // Connect buttons
+  document.querySelector('.scroll-btn.left').addEventListener('click', scrollCardsLeft);
+  document.querySelector('.scroll-btn.right').addEventListener('click', scrollCardsRight);
+  //class="scroll-btn right"
+/*This means the element has TWO classes:
+scroll-btn
+
+right */
+
+  /*STARTING POSITION
+scrollLeft = 0
+
+▶ RIGHT BUTTON CLICK #1
+scrollLeft + cardWidth
+= 0 + 235
+= 235
+
+
+Check with maxScroll:
+
+newScroll = min(235 , 1110)
+newScroll = 235
+
+
+So scroll moves 235px to the right.
+
+▶ RIGHT BUTTON CLICK #2
+scrollLeft = 235
+scrollLeft + cardWidth = 235 + 235 = 470
+newScroll = min(470 , 1110)
+newScroll = 470
+
+
+Moves to 470px.
+
+▶ RIGHT BUTTON CLICK #3
+470 + 235 = 705
+newScroll = min(705 , 1110)
+newScroll = 705
+
+▶ RIGHT BUTTON CLICK #4
+705 + 235 = 940
+newScroll = min(940 , 1110)
+newScroll = 940
+
+▶ RIGHT BUTTON CLICK #5
+940 + 235 = 1175
+newScroll = min(1175 , 1110)
+newScroll = 1110   (STOP at maxScroll)
+
+
+You reach end.
+
+🛑 CLICK RIGHT AGAIN
+1110 + 235 = 1345
+min(1345 , 1110) = 1110
+
+
+👉 NO MOVEMENT.
+👉 Already at the last card.
+
+🎯 LEFT BUTTON
+
+Your exact code:
+
+const newScroll = Math.max(scrollContainer.scrollLeft - cardWidth);
+scrollContainer.scrollTo({ left: newScroll, behavior: 'smooth' });
+
+
+Assume we are at:
+
+scrollLeft = 1110
+
+◀ LEFT BUTTON CLICK #1
+scrollLeft - cardWidth
+1110 - 235 = 875
+
+newScroll = max(875 , 0)
+newScroll = 875
+
+◀ LEFT BUTTON CLICK #2
+875 - 235 = 640
+max(640 , 0) = 640
+
+◀ LEFT BUTTON CLICK #3
+640 - 235 = 405
+
+◀ LEFT BUTTON CLICK #4
+405 - 235 = 170
+
+◀ LEFT BUTTON CLICK #5
+170 - 235 = -65
+max(-65 , 0) = 0
+
+
+👉 STOP at starting point.
+
+*/
+};
+
+//Javascript code to toggle the about dropdown list
+//let abtToggle =document.getElementsByClassName("abt-dropdown")[0]
+//const dropdownMenu = document.querySelector('.dropdown-menu');
+/*document.querySelector('.abt-dropdown')
+Returns the first element that matches the selector.
+You can use any CSS selector (.class, #id, div > ul, etc.). */
+/*abtToggle.addEventListener("mouseover",()=>{
+ dropdownMenu.style.display="block";
+});
+
+abtToggle.addEventListener('mouseout', () => {
+  dropdownMenu.style.display ='none';
+}); */
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
