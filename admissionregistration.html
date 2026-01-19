@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Application Form|SCT</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    .title{
+        display:flex;
+        flex-direction: row;
+        }
+        p{
+             padding-left:910px; 
+             margin-top:-53px; 
+            font-size:17px;
+             margin-bottom: 15px;
+              transform: translateX(-12px);/*align-items:end;---the parent div has this alignment so to override that and to move left p alone */
+        }
+
+        a{
+           
+            font-size:17px;
+            /* line-height: 7px; */
+           margin-right:38px;
+
+           /*If you add margin-right or transform to an <a>, it only moves that element, because the <p> doesn’t care about <a>’s width. The container’s width is dominated by the widest child, which is usually the <p>.
+
+<p> is widest → affects others.
+
+<a> is narrower → doesn’t affect <p>.*/
+        }
+
+        
+        .noandemail{
+            display:flex;
+            flex-direction: column;
+             align-items:end; 
+             margin-top: 70px;/*this movies 70px the whole heading no and mailid down and this controlled by p elements margin top px*/
+             transform: translateX(20px);
+            line-height: 11px;
+
+        
+        }
+
+        .mailid {
+  display: block;          /* make it behave like a block to center properly */
+  /*align-self: flex-end;      /* overrides the parent align-items for this item */
+ /*text-align:right;      /* centers the text itself */
+       transform: translateX(50px); 
+}
+
+img{
+    margin-left: 5px;
+    margin-top:5px;
+}
+
+.image{
+    background-image:url('https://imgs.search.brave.com/3LC0CYHMj90GEMjc02NFbi72gq5eScewF23Yshu5KjI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9oYXJ2YXJkLXVu/aXZlcnNpdHktY2Ft/YnJpZGdlLXVzYV8x/MDI5NDczLTMwMjky/Ni5qcGc_c2VtdD1h/aXNfaW5jb21pbmcm/dz03NDAmcT04MA') ;
+    background-position:center;
+    background-size:cover;
+    
+
+      width: 100vw;
+        height:70vw;  /* set height as needed */
+    position: relative;     /* needed for absolute positioning inside */
+    margin-top: 1px;       /* space below header */
+}
+
+body{
+    overflow-x: hidden;
+    
+            font-family: Arial, sans-serif;
+        
+}
+
+.registrationcontainer{
+      width:340px;
+    height:730px;
+    border:1px solid white;
+    margin-left:-100px;
+   display: flex;
+   flex-direction: column;
+   
+   position:absolute;
+   top: 15px;           /* distance from top of .image */
+    left: 900px;  
+    line-height: 30px;
+    gap:4px;
+   background-color: white;
+   align-items: center;
+   justify-content: flex-start;
+   border-radius: 3px;
+   
+   
+  
+}
+input{
+    width:300px;
+    height:35px;
+    
+    
+}
+
+#register{
+    text-decoration: underline;
+    color:blue;
+     display: inline; 
+    margin:0;/*ELEMENT P HAS DEFAULT MARGINING*/
+padding:0;
+margin-right: 30px;
+margin-left: -100px;
+}
+
+.panda{
+   display: flex;
+    flex-direction: row;
+
+    
+   
+}
+
+#state{
+    width:144px;
+}
+
+#city{
+    width:144px;
+}
+
+.stateandcity{
+    display: flex;
+    flex-direction: row;
+    gap:8px;
+}
+
+/* Initially disable the city input */
+#city:disabled {
+    background-color: #f0f0f0;  /* light gray background to show it's disabled */
+    cursor: not-allowed;         /* show not-allowed cursor */
+}
+
+/* Initially disable the city input */
+#course:disabled {
+    
+    cursor: not-allowed;         /* show not-allowed cursor */
+}
+
+.captcha-container{
+    display: flex;
+    flex-direction: row;
+    gap:8px;
+}
+
+#captcha{
+    width:117px;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+    padding-right: 30px; /* give space for the refresh icon */
+    
+}
+
+#captchafield{
+    width:140px;}
+  
+    
+
+    select{
+    width:300px;
+    height:39px;
+    
+}
+
+.mobilenumber{
+    display: flex;
+    flex-direction: row;
+    gap:8px;
+}
+
+.otpandtimer{
+   margin-left:605px;
+    margin-bottom: 39px; 
+ 
+}
+
+
+#mobileno {
+    width:90px; /* 146*/
+    
+
+    /* flex-shrink: 1;               make all 3 equal width */
+  /*height: 39px;          /* match other inputs */
+  font-size: 14px;
+   
+}
+
+ #mobileno2 {
+    width:202px;
+   
+    /* flex-shrink: 1;               make all 3 equal width */
+  /*height: 39px;          /* match other inputs */
+  font-size: 14px;
+   
+}
+
+.getotp{
+  position: relative;
+}
+
+#getOtpBtn{
+  position:absolute;
+  left:137px;
+  top:6px;
+}
+
+
+
+  #refresh {
+     position: absolute;
+  right: 20px;   /* distance from right edge of input */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #0000FF;
+  }
+
+
+
+  .captcha-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#registerbutton{
+    background-color: rgb(186, 126, 53);
+    color:black;
+    width:300px;
+    height:35px;
+    border:none ;
+    cursor:pointer;
+    border-radius: 3px;
+    font-size:large;
+
+}
+
+#checkbox{
+    width:60px;
+    height:17px;
+    margin-top: 9px;
+    
+   
+}
+
+.class{
+  display:flex;
+  flex-direction: row;
+ 
+  
+}
+
+.thepara{
+  display: inline-flex;       /* places checkbox and text side by side */
+  align-items: flex-start;    /* aligns top edges (use 'center' for vertical centering) */
+  gap:4px;
+  margin-left: -1px;         /* adjust left position if needed */
+  max-width: 300px;           /* limit text width for neat wrapping */
+}
+
+
+.panda-wrapper {
+  margin-bottom: 15px; /* vertical space below Register/Login */
+}
+
+hr{
+  
+   width:90px;
+    margin-left:-213px;
+    
+    /* display:inline-block; */
+     background-color:rgb(207, 41, 41);
+     height:2px;
+      border: none;   
+        margin-top: -18px;
+        margin-bottom: 10px;
+} 
+
+
+
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="title">
+    <img src="images/admissionregistrationcollegelogo3.png" alt="college logo" width="150" height="75">
+    <div class="noandemail">
+    <p>Admission Helpline</p> 
+
+    
+    <a  class="no"href="tel:+917550326387">7550326387/</a></br>
+    <a class="mailid" href="mail to:admissions@sashvi.edu.in">admissions@sashvi.edu.in</a>
+    </div>
+    </div>
+    <div class="image">
+        <div class="registrationcontainer">
+          <div class="panda-wrapper">
+            <DIV CLASS="PANDA">
+              <form  onsubmit=" return validateCaptcha()"action="index.html">
+           <p id="register">Register</p> 
+           <a  id="login"href="#" >Login</a>
+           </DIV>
+           
+           </div>
+            <hr> 
+           <input id="names" type="text" placeholder="Enter Name *" required>
+           <input id="emails" type="email" placeholder="Enter Email Address *" required> 
+           <!-- <label for="mobileno" >+91</label> -->
+            <div class="mobilenumber">
+                <!-- <label for="mobileno">"+91"</label> -->
+           <select id="mobileno"  >
+            <option id="+91" value="+91" selected>India(+91)</option>
+            <option id="+93"  value="+93">Afghanistan(+93)</option>
+            <option id="+355"  value="+355">Albania(+355)</option>
+           </select>
+          <!-- new div for positioning get otp button on mobile no input field--><div class="getotp"> 
+           <input  id="mobileno2" type="tel"  placeholder="Enter Mobile Number *" required> 
+           <button onclick="otpSent()" type="button" id="getOtpBtn" style="color:#0000FF;border:none;background-color: rgb(74, 188, 203);text-decoration: underline; height:28px;font-size:12px;width:65px;display:none;">Get OTP</button>
+           <div style="position:absolute;color:rgb(185, 185, 185);left:147px;top:1px;font-size: 12px;" id="demo"></div>
+           </div>
+
+
+
+           </div>
+           <div class="otpandtimer">
+           <input id="otp" type="text" placeholder="Enter OTP" disabled>
+            <p id="timer" style="color:red; font-size:14px;"></p>
+           </div>
+           <input type="password" class="passwordget" placeholder="Any Password of Your Choice *"  required >
+           
+           
+          <div class="stateandcity">
+           <input list="stateList" id="state"type="text"placeholder="Select State *" required size="1">
+           <datalist id="stateList">
+            <option value="Select State *"></option>
+            <option value="Andaman and Nicobar"></option>
+            <option value="Andhra Pradesh"></option>
+            <option value="Arunachal Pradesh"></option>
+            <option value="Assam"></option>
+           </datalist>
+           <input id="city" list="cityList" type="text" placeholder="Select City *" required disabled>
+           <datalist id="cityList">
+            
+           </datalist>
+           </div>
+           
+           <input  id="campus" type="text" placeholder="Select Campus *" list="campusList" required>
+           <datalist id="campusList">
+  <option value="Sashvi College Of Technology"></option>
+  <option value="SCT Business School"></option>
+  </datalist><!--The list attribute on <input> links it to the <datalist> by ID.The <option> values inside <datalist> are what appear in the dropdown.The user can select an option or type their own.-->
+           
+            <input id="course" list="courseList" type="text" placeholder="Select Course *" required>
+            <datalist ID="courseList">
+
+            </datalist>
+           <input  id="specialization" list="specializationList" type="text" placeholder="Select Specialization *" required>
+           <datalist id="specializationList">
+            
+           </datalist>
+
+           <input type="text" list="how" placeholder="How do you know about Sashvi Institutions *">
+           <datalist id="how">
+            <option>Google Search</option>
+            <option>Social media ad</option>
+            <option>Education Fair</option>
+            <option>Advertisement</option>
+            <option>Sashvi Alumni</option>
+            <option></option>
+           </datalist>
+           <div class="captcha-container">
+            <div class="captcha-wrapper">
+            <input id="captcha" type="text"  readonly>
+            <span id="refresh">&#x21bb;</span>
+            </div>
+            <input id="captchafield" type="text" placeholder=" Enter Captcha">
+            
+           </div>
+           
+           <div class="thepara">
+          <input id="checkbox" type="checkbox">
+          I authorize Sashvi Institutions & its
+            representatives to contact me with updates
+            and notifications via
+            Email/SMS/WhatsApp/Call.This will override
+            DND/NDNC * </div>
+          <button id="registerbutton">Register</button>
+           </form>
+
+       </div>
+
+    </div>
+    
+
+    <script>
+//TO CHECK NAME AND EMAIL ADDRESS ENTERED BY USER
+
+let name=document.getElementById("names");
+ name.addEventListener('input', () => {
+    const enteredName = name.value.trim(); // entered name
+
+    // ✅ Check if it contains only alphabets (A–Z or a–z)
+    if (/^[A-Za-z\s]+$/.test(enteredName)) {
+        console.log("Valid name: contains only letters");
+    } else {
+        alert("Invalid name: only A–Z or a–z allowed");
+    }
+ });
+ /*^[A-Za-z\s]+$
+A–Z → uppercase letters
+a–z → lowercase letters
+\s → whitespace (like space, tab, etc.)
++ → one or more characters
+^ and $ → ensure the entire input matches this pattern */
+
+//TO CHECK MAIL ID VALIDATION
+
+let mailId=document.getElementById("emails");
+/*Check only when user leaves the field:
+Use "blur" instead of "input": */
+mailId.addEventListener('blur',()=>{
+  let enteredMailid=mailId.value.trim();
+  /*A-Z and a-z are alphabetic ranges — order matters here. */
+  if(/^[A-Za-z0-9.+-_%]+@[A-Za-z0-9-.]+\.[A-Za-z]{2,}$/.test(enteredMailid)){
+    console.log("valid email id");
+  }
+  else{
+alert("Invalid email id");
+  }
+});
+
+//TO CHECK MOBILE NUMBER VALIDATION
+let countryCode=document.getElementById("mobileno");
+let mobileNo=document.getElementById("mobileno2");
+let otpBtn=document.getElementById("getOtpBtn");
+
+mobileNo.addEventListener('blur',()=>{// we are adding the event listener to the mobile number field mobilENo.
+  const code= countryCode.value.trim();
+  const no=mobileNo.value.trim();
+  if(code==="+91"){
+    startPattern = /^[6-9][0-9]{9}$/;
+    if( startPattern.test(no)){
+      console.log("valid number")
+      otpBtn.style.display = "block";
+
+    }
+    else{
+      alert("enter 10 digit number starting with 6–9 for India (+91)");
+      //  otpBtn.style.display = "none";
+    }
+  }
+  else if(code==="+93"){
+    if(/^7[0-9]{8}$/.test(no)){
+      console.log("valid number")
+      otpBtn.style.display = "block";
+
+    }
+    else{
+      alert("enter 9 digit number starting with 7 for Afghanistan (+93)");
+    }
+  }
+  else if(code==="+355"){
+    if(/^[67][0-9]{8}$/.test(no)){
+      console.log("valid number")
+      otpBtn.style.display = "block";
+
+    }
+    else{
+      alert("enter 9 digit number starting with 6 or 7 for Albania (+355)");
+    }
+  }
+});
+
+//WHILE CLICKING ON THE BUTTON ,IT SHOULD CHANGE TEXT TO OTP SENT
+function otpSent(){
+  otpBtn.style.display="none";
+  document.getElementById("demo").innerHTML="OTP Sent";
+  document.getElementById("otp").disabled = false;
+  /*when clicking on the button check in html i have given <button onclick="otpSent" > so when 
+    clicking on the button this function performs, get otp to disappear and otp sent 
+    text to appear and the next input field to enable */
+}
+
+//PASSWORD VERIFICATION
+let  passwordGet = document.getElementsByClassName("passwordget")[0]
+/*✅ Reason: getElementsByClassName() returns a LIST, not a single element
+So to access the actual element inside the list, you must choose an index:
+
+[0] → first element
+
+[1] → second element
+
+etc. */
+passwordGet.addEventListener("blur",()=>{
+  const password=passwordGet.value.trim();
+  if(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z0-9!@#$%^&*()_+]{8,}$/.test(password)){
+    console.log("password verified")
+  }
+  else{
+    alert("Password must contain : At least one uppercase letter (A–Z) , one lowercase letter (a–z), one digit (0–9),one special character (e.g., @ # $ % !) and minimum 8 character in length")
+  }
+});
+
+
+  // 1. Mapping of states to their cities
+  const stateCityMap = {
+    "Andaman and Nicobar": ["Port Blair", "Diglipur", "Rangat"],
+    "Andhra Pradesh": ["Vijayawada", "Visakhapatnam", "Guntur"],
+    "Arunachal Pradesh": ["Itanagar", "Pasighat", "Tawang"],
+    "Assam": ["Guwahati", "Silchar", "Dibrugarh"]
+  };
+
+  // 2. Get references to the state and city input fields and city datalist
+  const stateInput = document.getElementById('state');
+  const cityInput = document.getElementById('city');
+  const cityList = document.getElementById('cityList');
+
+  // 3. Listen for user input on the state field
+  stateInput.addEventListener('input', () => {
+    const selectedState = stateInput.value.trim(); // get the selected state
+    cityList.innerHTML = ''; // clear previous city options
+    cityInput.value = '';    // clear any previously typed city
+
+    if (stateCityMap[selectedState]) {
+      // Enable the city input when a valid state is selected
+      cityInput.disabled = false;
+
+      // Add the relevant cities to the city datalist
+      stateCityMap[selectedState].forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        cityList.appendChild(option);
+      });
+    } else {
+      // Disable the city input if the state is invalid or empty
+      cityInput.disabled = true;
+    }
+  });
+
+
+  // 1. Mapping of campus to courses
+  const campusCourse = {
+    "Sashvi College Of Technology": ["M.E/M.Tech.", "MCA"],
+    "SCT Business School": ["MBA"]
+  };
+
+  // 2. Get references to the campus input, course input, and course datalist
+  const campusInput = document.getElementById('campus');
+  const courseInput = document.getElementById('course');
+  const courseList = document.getElementById('courseList');
+
+  // 3. Initially disable the course input
+  courseInput.disabled = true;
+
+  // 4. Listen for user input on the campus field
+  campusInput.addEventListener('input', () => {
+    const selectedCampus = campusInput.value.trim(); // get the selected campus
+    courseList.innerHTML = ''; // clear previous course options
+    courseInput.value = '';    // clear any previously typed course
+
+    if (campusCourse[selectedCampus]) {
+      // Enable the course input when a valid campus is selected
+      courseInput.disabled = false;
+
+      // Add the relevant courses to the course datalist
+      campusCourse[selectedCampus].forEach(course => {
+        const option = document.createElement('option');
+        option.value = course;
+        courseList.appendChild(option);
+      });
+    } 
+    
+  
+
+    
+    else {
+      // Disable the course input if the campus is invalid or empty
+      courseInput.disabled = true;
+    }
+  });
+
+
+
+
+  const generateCaptcha = () => {
+  const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  
+  // Array.from({length:6}) creates an array with 6 undefined elements
+  // The arrow function () => chars[Math.floor(Math.random() * 62)]
+  // runs for each element, picking a random character from the string
+  return Array.from({ length: 6 }, () => 
+    chars[Math.floor(Math.random() * chars.length)]
+  ).join(''); // join the array of characters into a single string
+};
+
+// Get references to input and refresh button
+const captchaInput = document.getElementById('captcha');
+const refreshBtn = document.getElementById('refresh');
+
+// Generate captcha on page load
+captchaInput.value = generateCaptcha();
+
+// Generate new captcha when clicking refresh
+refreshBtn.onclick = () => {
+  captchaInput.value = generateCaptcha();
+};
+
+//TO CHECK WHETHER THE USER ENTERS THE CORRECT CAPTCHA
+//ALSO TO AUTHORIZE PERMISSION TO CONTACT
+/*So everything is validated at the moment of submission.
+👉 Because of this, you don’t need extra event listeners for those checks. */
+function validateCaptcha(){
+let captchaGet=document.getElementById("captchafield").value.trim();
+
+
+ if(captchaInput.value!=captchaGet ){
+ alert("Warning:Enter the valid captcha")
+  return false;
+ }
+ 
+//ALSO TO AUTHORIZE PERMISSION TO CONTACT
+let checkBox=document.getElementById("checkbox");
+
+    if (!checkBox.checked) {
+      //The exclamation mark (!) in JavaScript means logical NOT.
+        alert("You must agree to the terms to register!");
+       // event.preventDefault(); // Prevent form submission
+       //✔ No dead code after return
+       return false;
+    } 
+ console.log("Captcha verified & checkbox selected");
+  return true;
+
+
+}
+
+
+
+//Mapping of course to specialization
+const courseSpecialization ={"M.E/M.Tech.":["M.E Construction Planning and Management","M.E.Environmental Engineering","M.E.Embedded System and Computing","M.E VLSI Design"],
+"MCA":["Master of Computer Applications"]
+
+};
+
+//to get id reference
+
+// const courseInput=document.getElementById('course');
+const specializationInput=document.getElementById('specialization');
+const specializationList =document.getElementById('specializationList');
+
+//intially disable specialization
+
+specializationInput.disabled=true;
+
+//add event listener
+
+courseInput.addEventListener('input',()=>{
+   specializationList.innerHTML='';
+   specializationInput.value='';
+   const selectedCourse= courseInput.value.trim();
+   if(courseSpecialization[selectedCourse]){
+        specializationInput.disabled=false;
+
+        courseSpecialization[selectedCourse].forEach(specialization=>{
+          const option=document.createElement('option');
+          option.value=specialization;
+          specializationList.appendChild(option);
+        });
+       
+   }
+   else{
+    specializationInput.disabled=true;
+   }
+});
+
+// ==========================
+
+
+</script>
+
+    
+</body>
+</html>
