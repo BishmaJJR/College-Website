@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institution - Sashvi College Of Technology</title>
+    <link rel="shortcut icon" href="images/logoonly1.png" type="image/x-icon">
+    <style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Container for the entire header */
+.header {
+    display: flex;
+    align-items: center; /* vertical alignment of all items */
+    gap: 15px;           /* horizontal spacing between items */
+    padding: 10px 20px;
+}
+
+/* College logo */
+.header #collegelogo {
+    width: 330px;
+    margin-left:-50px;
+    margin-top:-70PX;
+margin-right:300px;
+}
+
+.side-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Text elements */
+.side-menu .text {
+    font-size: 17px;
+    color:grey;
+}
+
+.side-menu #TNEA {
+    font-size: 17px;
+    color: #15263d;
+    margin-right:10px;
+    margin-left:7px;
+}
+
+
+
+/* Social icons container */
+.side-menu .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 7px; /* spacing between icons */
+}
+
+/* Individual social icons */
+.side-menu .social-icons img {
+    width: 18px;
+    height: 18px;
+}
+
+.side-menu .social-icons{
+    margin-right: 10px;;
+}
+
+/* Links */
+.side-menu a {
+    text-decoration: none;
+    color: grey;
+    font-size: 17px;
+    margin-left: 5px;
+}
+
+/*2nd row*/
+.bgblue{
+    display:flex;
+    gap:100px;
+    justify-content:center;
+    box-sizing: border-box; 
+    margin-top: -50px;
+    background-color:#15263d; 
+    height:40px;
+    color:white;
+    padding: 11px 0;
+    position:relative;
+   
+}
+
+.menu-item:hover .menu-list{
+   display: flex;
+   /*display: none hides the menu so the page layout is clean.
+
+Hover triggers display: flex to show it.
+
+Absolute positioning ensures the menu appears visually over the page rather than taking up space in 
+the normal flow.*/
+
+    
+}
+
+.menu-item:hover{
+    text-decoration: underline;
+    text-decoration-color: aquamarine;
+   text-decoration-thickness: 2px;
+   text-underline-offset:12px;
+   /*text-underline-offset controls the distance between the text and its underline.*/
+}
+
+.menu-item {
+   
+    cursor: pointer;
+
+}
+
+.menu-list {
+    display: none;               /* hidden by default */
+    flex-wrap: wrap;  
+    position:absolute;
+      right:0;            
+    
+      top:100%;
+    /*top: 0 → places the element’s top edge aligned with the parent’s top edge.
+
+top: 100% → places the element’s top edge aligned with the parent’s bottom edge.*/
+    width:100vw;
+    left:0;
+                   /*width: 66.9vw; */              
+    background-color: #e3e3e3; 
+    color: #15263d;
+    
+    gap: 20px;
+    box-sizing: border-box;
+     padding: 20px 50px;  
+    z-index: 1000;  
+    justify-content: center;
+    
+}
+
+ .column{
+ border-right: 0.2px solid #15263d; 
+ padding-right: 50px;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+ li{
+    line-height:25px;
+   
+} 
+
+.column h4{
+   
+    padding-bottom:-10px;
+}
+
+.bgblue .menu-item  a{
+    color:white;
+    text-decoration: none;
+}
+
+/*media queries*/
+
+
+
+/* HAMBURGER ICON */
+.hamburger {
+  display: none;
+   flex-direction: column;
+  cursor: pointer;
+  gap: 5px; 
+}
+
+
+
+/* RESPONSIVE — show hamburger only on small screens */
+@media (max-width: 768px) {
+  /* Hide text, links, and icons in small screens */
+  .side-menu .text,
+  .side-menu .social-icons,
+  .side-menu a {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Show the hamburger icon */
+  .hamburger {
+    display: flex;
+    position: absolute;   /* free placement */
+
+   /* Positioned relative to nearest “positioned ancestor” (relative, absolute, fixed, sticky).
+If no ancestor is positioned, it defaults to the <html> / body (effectively the viewport).
+Result in your code:
+.header is static → nearest positioned ancestor doesn’t exist → hamburger is positioned relative to page/viewport.
+top: 20px; right: 20px → 20px from top-right of the page, not the header.*/
+    top: 25px;            /* adjust vertical alignment */
+    right: 25px;          /* place near right edge */
+    z-index: 10000;        /* stay above everything */
+   } 
+
+  /* Optionally adjust logo for small screens */
+  /* .header img#collegelogo {
+    width: 250px;
+    margin-left: 10px;
+    margin-top: -40px;
+    margin-right: 0;
+  } */
+
+  /* Adjust blue navigation bar spacing */
+  .bgblue {
+    gap: 40px;
+  } 
+
+   .side-menu {
+  position: fixed;
+   top: 0; 
+  right: -100%;
+  width: 280px;
+  height: 80%;
+  background-color: white;
+   box-shadow: -2px 0 10px rgba(0,0,0,0.2); 
+   /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+  display: flex;
+  flex-direction: column; 
+  align-items:center;   /*🔹 align text to left */
+  justify-content: center; /* 🔹 center vertically */
+  gap: 15px;             /* 🔹 add spacing between items */
+  padding: 40px 25px;
+  box-sizing: border-box;
+  /* By default, CSS uses box-sizing: content-box, which means:
+The width/height you set applies only to the content.
+Padding and border are added outside of that width/height. */
+ transition: right 0.3s ease;
+
+  z-index: 9999; /*z-index controls the stacking order of elements on the page. */
+} 
+
+ .hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #15263d;
+  border-radius: 2px;
+} 
+
+/* SIDE MENU (SLIDE FROM RIGHT) */
+
+
+ .side-menu.active {
+  right: 0;
+}
+
+.side-menu .text,.side-menu a {
+  font-size: 17px;
+  color: #15263d;
+  margin-bottom: 10px;
+}
+
+.side-menu .social-icons {
+  display: flex;
+  gap: 12px;
+  margin: 15px 0; 
+  justify-content: center; /* 🔹 center social icons */
+ }
+
+.side-menu .social-icons img {
+  width: 20px;
+  height: 20px;
+}
+
+.side-menu a {
+  color: #15263d;
+  text-decoration: none;
+  font-size: 17px;
+  margin: 5px 0;
+}
+} 
+
+/*FULL SIZED COLLEGE IMAGE ROW STLYING*/
+.fullSizedImage{
+  position:relative;
+}
+
+.Apply-now  {
+  position:fixed;
+  left:1181px;
+  top:290px;
+  /* width:200px; */
+ transform:rotate(270deg);
+  z-index: 2;
+  
+  
+}
+
+.fullSizedImage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* makes image dim 
+  0.1 to 0.9 transparent ,1->opaque*/
+  z-index: 1;
+
+/* 
+Overlay explanation:
+- top:0; left:0 → starts from top-left of parent
+- width/height:100% → covers full image area
+- z-index:1 → sits above image but below text
+- rgba(...) → adds transparent black dim effect
+*/
+}
+
+.ceed{
+  position:absolute;
+   top:165px;
+   left:470px;  
+  letter-spacing: 10PX;
+  z-index: 2;
+  border:7px solid white;
+  /* width:130px; */
+   height:40px; 
+  display:flex;
+  flex-direction:row ;
+   justify-content: center; 
+  align-items: center; 
+  padding-left:30px;
+   padding-right:30px; 
+  padding-top:18px;
+  padding-bottom:18px;
+  letter-spacing: 4px;;
+}
+/* Institutions */
+.institution-alldetail-fromaboutus{
+  color:#15263d;
+}
+
+/*institution-link-div */
+.link-div {
+  display:flex;
+  flex-direction: row;
+  margin-left: 260px;;
+  margin-top: 35px;;
+  margin-bottom:35px;
+  
+
+}
+
+.link-div .link1 ,  .link-div .link2 , .link-div .link3 , .link-div .link4{
+  width:165px;
+  height: 150px;
+  
+  margin-left:10px;
+}
+
+.link-div .link1 ,  .link-div .link3{
+border:2px solid #15263d;
+}
+
+.link-div .link2 , .link-div .link4{
+border:2px solid aquamarine;
+} 
+
+/*WHEN CLICKING ON "ABOUT" SHOULD HOVER THE DROPDOWN LIST */
+.abt-dropdown{
+  position:relative;
+  padding-bottom: 220px; /* slightly larger than dropdown height */
+  
+  
+
+}
+
+.dropdown-menu{
+  position:absolute;
+   z-index:9999;
+  left: -70px;
+  top:13px;
+  width:190px;
+  height:200px;
+  background-color: #e3e3e3; 
+  
+  padding:0;
+  
+     /* padding-left:30px;;
+   padding-right:14px;;   */
+   /* padding-top:15px;;
+   padding-bottom:15px;;
+    */
+  
+ 
+}
+
+
+
+ .abt-dropdown:hover .dropdown-menu{
+display:block !important;
+
+}
+.dropdown-menu li a{
+  display: flex;             /* use flex inside <a> */
+  justify-content: flex-start;   /* horizontal center */
+  align-items: flex-start;       /* vertical center */
+   padding-left:30px;;
+   padding-right:14px;; 
+  
+  
+}
+
+.dropdown-menu li :hover {
+    background-color: aquamarine;
+    
+  
+    
+    
+    
+}
+
+/*the end*/
+
+
+.footer-section{
+background-color:#162e50;
+padding-top:45px;
+padding-left:15px;
+color:lightgray;
+position:relative;
+height:610px;
+
+
+
+}
+
+.footer-section table{
+  line-height: 25px;
+}
+
+
+ /* .footer-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 30px 0;
+} */
+
+
+.vertical-line{
+  width:0.5px;
+  transform: scaleX(0.9); /* makes it ~0.3px thin so 0.3px is very thin than 0.9px */
+  height:510px;
+  background-color:rgb(100, 195, 163);
+  position:absolute;
+  left:320px;
+  top:115px;
+}
+
+.contact-table .label{
+  padding-right: 0.1px;
+}
+
+.Explore{
+  position:absolute;
+  left:335px;
+  top:110px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.QuickLinks{
+  position:absolute;
+  left:650px;
+  top:110px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.ProfessionalChapters{
+  position:absolute;
+  left:650px;
+  top:450px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.Academics{
+  position:absolute;
+  left:960px;
+  top:110px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.Followuson{
+  position:absolute;
+  left:960px;
+  top:380px;
+  font-size: 15px;;
+  line-height: 25px;
+}
+
+.Followuson .followuson-images{
+display: flex;
+flex-direction: row;
+}
+/*for images to align horizontally give flex with flex direction row and padding right directly within the image tag using inline */
+
+.copyright{
+  background-color: #111f33;
+   height:43px;
+  width:100%; 
+ text-align: center;
+ color:rgb(136, 136, 136);
+ padding-top:24px;
+}
+
+
+
+
+</style>
+
+</head>
+<body>
+ <div class="header">
+    <img id="collegelogo" src="F:\Full stack course\college website\images\collegelogo.png" alt="college logo">
+    
+    <!-- Hamburger button -->
+ <div class="hamburger" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+
+</div> 
+
+<!-- SIDE MENU  -->
+<div class="side-menu" id="sideMenu">
+  <div class="text">SII (Study in India)</div>
+  <div class="text">TNEA Code: 3712</div>
+
+  <div class="social-icons">
+    <img src="images/youtubeicon.png" alt="youtube">
+    <img src="images/facebooklogo2.png" alt="facebook">
+    <img src="images/headerinstagram3.webp" alt="instagram">
+    <img src="images/phonelogo.png" alt="phone">
+  </div>
+
+  <div class="text">Contact</div>
+  <a href="index.html">Home</a>
+  </div>  
+    </div>
+
+<div class="bgblue">
+        <div class="menu-item abt-dropdown"><a href="#">About</a>
+          
+            <ul class="dropdown-menu" type="none" style="display:none">
+
+       <li><a href="institution.html" style="color:black; line-height:40px;">Institution</a></li>
+        <li><a href="visionandmission.html" style=" color: #15263d;line-height:40px;">Vision and Mission</a></li>
+        <li><a href="#" style=" color: #15263d;line-height:40px;">Management</a></li>
+        <li><a href="#" style=" color: #15263d;line-height:40px;">Principal</a></li>
+        <li><a href="#" style=" color: #15263d;line-height:40px;">Events</a></li>
+      </ul>
+      
+
+        </div>
+        
+        <div class="menu-item">Study
+            <div class="menu-list">
+            <div class="column">
+                <ul type="none">
+                <h4>Programmes</h4>
+                
+                    <li>Undergraduate</li>
+                    <li>Postgraduate</li>
+                    <li>Research</li>
+
+                </ul>
+            </div>
+            <div  class="column">
+                <ul type="none">
+                <h4>Hands-on Learning</h4>
+               
+                    <li>Fluke</li>
+                    <li>Yokogawa</li>
+                    <li>Bosch</li>
+                    <li>Siemens</li>
+
+                </ul>
+            </div>
+
+            <div class="column">
+                <ul type="none">
+                <h4>Academic Excellence</h4>
+                
+                <li>OBE</li>
+                <li>FCLF</li>
+                <li>KLDA</li>
+                <li>CLED</li></ul>
+            </div>
+
+             <div  >
+                            <ul type="none">
+                            <h4>Academic Innovation</h4>
+               
+                <li>Prototyping</li>
+                <li>Innovation Practicum</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+        <div class="menu-item"><a href="admission.html">Admissions</a></div>
+
+        <div class="menu-item">Research</div>
+        <div class="menu-item"><a style="text-decoration:none;"href="placements.html">Placements</a></div>
+    </div>
+    <div class="fullSizedImage">
+   <img  src="images/collegefullsized.webp" alt="college image" width="100%" height="520vh"> 
+  <DIV CLASS="ceed">
+   <h1 style="font-size: 36px; color:white">INSTITUTION</h1>
+   </DIV>
+
+<div class="Apply-now">
+  
+  <button style="height:40px;width:120px;background-color:#15263d;border:none;"><a style="font-size:17px;color:white;text-decoration: none; " href="admission.html" >Apply Now</a></button>
+  
+</div>
+   </div>   
+   <!--About us-->
+   <div class="institution-alldetail-fromaboutus">
+     <h1 style="margin-left:560px;margin-top:50px;font-size: 35px;color:#15263d;">About Us</h1>
+     <hr style="background-color:aquamarine;width:110px;height:4px;margin-top:-18px;border-style:none;margin-left:580px;margin-bottom: 25px;;">
+     <p  style="text-align:justify;margin-left:150px;margin-right: 150px;line-height:27px;margin-bottom: 25px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam maiores possimus aspernatur vel, libero esse pariatur non officiis mollitia debitis sint nihil eligendi eum earum corporis officia impedit omnis neque facilis aut itaque molestiae necessitatibus. Dicta in, quas quia corrupti molestiae eveniet ipsam nesciunt quod! Amet harum distinctio quos laborum?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, repellendus.</p>
+     <p style="text-align:justify;margin-left:150px;margin-right: 150px;line-height:27px;margin-bottom: 25px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore voluptatem sit quas. Facilis veritatis itaque hic maiores earum! Minus commodi esse dignissimos minima ullam tempore obcaecati similique animi quia sed illo repudiandae, id officia nisi dolorum eos quas sapiente ab. Voluptates modi, nisi laborum, incidunt labore nam iusto neque odio, ea deserunt perferendis architecto velit vitae asperiores illo culpa praesentium?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat, Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, suscipit.</p>
+     <p style="text-align:justify;margin-left:150px;margin-right: 150px;line-height:27px;margin-bottom: 25px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque voluptatum, quia eum nisi deleniti maxime. Eaque, eligendi est rerum ipsa dolores, at vero nam tempore porro eum odit labore laudantium similique ipsum. Vero, laborum aperiam, asperiores pariatur veritatis deserunt totam eos tenetur iste tempora sapiente doloremque neque expedita quo, aspernatur velit quis reiciendis necessitatibus cupiditate adipisci! Possimus maiores sint Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, dolorum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, aut!</p>
+    <p style="text-align:justify;margin-left:150px;margin-right: 150px;line-height:27px;margin-bottom: 25px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas voluptates sapiente vitae. Pariatur beatae omnis illum sunt iusto, voluptatem saepe dicta porro, ab odio consequuntur aliquid perferendis numquam veritatis quam esse molestiae. Eius minima cupiditate, rerum illo nemo culpa, perspiciatis omnis nostrum vero ratione nam consequatur facilis. Odit nihil libero quis explicabo magni voluptatum, quam odio accusamus eveniet consequatur architecto?</p>
+    <img src="images/collegefullsized.webp" alt="college image" width="960px" height="500px" style="margin-left:150px;margin-right:150px;margin-top: 70px;;">
+<!--Teaching Learning and Evaluation-->
+    <h1 style="margin-left:330px;margin-top:50px;font-size: 35px;color:#15263d;">Teaching Learning and Evaluation</h1>
+    <hr style="background-color:aquamarine;width:200px;height:4px;margin-top:-15px;border-style:none;margin-left:520px;margin-bottom: 25px;;">
+    <p style="text-align:justify;margin-left:150px;margin-right: 150px;line-height:27px;margin-bottom: 25px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus reiciendis nemo iure eum iusto, harum aliquam molestias accusamus optio similique explicabo unde repellendus! Explicabo, delectus voluptatibus sapiente amet maxime optio? Obcaecati sint, sit qui tenetur ullam, alias asperiores doloribus est maxime eligendi eos dolore repellendus dignissimos molestiae. Unde, natus?</p>
+    <p style="text-align:justify;margin-left:150px;margin-right: 150px;line-height:27px;margin-bottom: 25px;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et iure in laboriosam quam officiis, quasi odio ex natus animi voluptate ea amet quos perspiciatis cupiditate molestias quo aut ipsa inventore culpa assumenda recusandae. Blanditiis corrupti vitae iste, quia illum est sint iusto optio recusandae ipsum atque animi explicabo delectus voluptatem unde ratione officiis pariatur debitis minima, voluptas, aut fuga ducimus omnis! Ullam reiciendis beatae praesentium eos. Eveniet neque praesentium mollitia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod numquam deleniti dolorum illo eligendi dolore ut voluptatibus explicabo corporis at, aliquid, culpa deserunt reiciendis consequuntur! Quasi laudantium nisi reprehenderit eaque?</p>
+  <!--Related pages and pages link-->
+  <p style="color:black;font-weight:10px;font-size: 25px;margin-top: 90px;margin-left: 350px;">/ / / / / / / / / / / / / Related Pages / / / / / / / / / / / / /  </p>
+  <div class="link-div">
+  <a href="institution.html" style="text-decoration:none;color:#15263d"    ><div class="link1"  ><img src="images/icons-mission.png" width="30px" height="30px" style="margin:15px;"><p style="margin-left:15px;margin-top: 40px;">Vision and Mission</p></div></a>
+ <a href="institution.html" style="text-decoration:none;color:#15263d"> <div class="link2"  ><img src="images/icons8-principal.png" width="30px" height="30px" style="margin:15px;" ><p style="margin-left:15px;margin-top: 40px;">Management</p></div></a>
+  <a href="institution.html" style="text-decoration:none;color:#15263d"><div class="link3" ><img src="images/icons-management.png" width="30px" height="30px" style="margin:15px;" ><p style="margin-left:15px;margin-top: 40px;">Principal</p></div></a>
+  <a href="institution.html" style="text-decoration:none;color:#15263d"><div class="link4" ><img src="images/icons-events.png" width="30px" height="30px" style="margin:15px;" ><p style="margin-left:15px;margin-top: 40px;">Events</p></div></a>
+</div>
+<!-- the end -->
+ <div class="footer-section">
+<pre style="margin-left: 3px;font-size:15px">About  |  Study  |  Admissions  |  Research  |  Placements</pre>
+  <img  style="margin-top:-30px;margin-bottom: -50px;"src="images/footercollegelogo3.png" width="200px" height="180px">
+  <!-- ENQUIRIES -->
+  <table class="contact-table">
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">Enquiries</td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;color:white;" class="label">Admissions</td>
+    </tr>
+    <tr>
+      <td class="label">Mobile</td>
+      <td class="colon">:</td>
+      <td class="value">+91 75 5032 6387</td>
+    </tr>
+    <tr>
+      <td class="label">E-mail</td>
+      <td class="colon">:</td>
+      <td class="value">admissions@sct.edu.in</td>
+    </tr>
+  <!-- </table> -->
+
+  <!-- GENERAL -->
+  <!-- <table class="contact-table"> -->
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">General</td>
+    </tr>
+    <tr>
+      <td class="label">Email</td>
+      <td class="colon">:</td>
+      <td class="value">info@sct.edu.in</td>
+    </tr>
+    <!-- <tr>
+      <td class="label">Website</td>
+      <td class="colon">:</td>
+      <td class="value">www.sct.edu.in</td>
+    </tr> -->
+   <!-- </table> -->
+
+  <!-- CONTACT DETAILS -->
+  <!-- <table class="contact-table"> -->
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">Contact Details</td>
+    </tr>
+    <tr>
+      <td class="label">College</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2661111</td>
+    </tr>
+    <tr>
+      <td class="label">Fax</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2669411</td>
+    </tr>
+    <tr>
+      <td class="label">Placement</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2661511</td>
+    </tr>
+    <tr>
+      <td class="label">Principal</td>
+      <td class="colon">:</td>
+      <td class="value">0422-2661151</td>
+    </tr>
+
+    <tr>
+      <td colspan="3" style="font-weight:bold;color:white;" class="section-title">Address</td>
+    </tr>
+    <tr>
+      <td colspan="3">Sashvi Campus,Saravanampatti,<br>
+        Chinnavedampatti (Post), Coimbatore-<br>
+        641049, Tamilnadu.</td>
+    </tr>
+  </table>
+  <div class="vertical-line">
+</div>
+
+<div class="Explore">
+
+ <h2 style="font-size:19px;color:white;">Explore</h2>
+
+Approval Letters<br>
+AICTE Recommended Books for Engg <br>Programmes<br>
+ARIIA 2022 report<br>
+Financial Statements<br>
+Higher Education Policy<br>
+HR Policy<br>
+IQAC<br>
+KCT Virtual Tour<br>
+Mandatory Disclosure<br>
+Non - Statutory committees<br>
+NIRF<br>
+RTI<br>
+Statutory committees<br>
+Undertaking
+</div>
+
+<div class="QuickLinks" >
+<h2 style="font-size:19px;color:white;">Quick Links</h2>
+AICTE - Feedback</br>
+Apply for WES/ Transcript & Student <br>Verification / Genuineness Verification</br>
+Anti-Ragging</br>
+Grievance Redressal Portal</br>
+Internal Complaints and Women<br> Empowerment Committee</br>
+Smartapps</br>
+Social Impact Report (2023-24)</br>
+Refund Policy</br>
+Privacy Policy
+</div>
+
+<div class="ProfessionalChapters">
+<h2 style="font-size:19px;color:white;">Professional Chapters</h2>
+ACM Student Chapter
+</div>
+
+<div class="Academics">
+  <h2 style="font-size:19px;color:white;">Academics</h2>
+  Academic Regulations</br>
+Academic Calendar</br>
+Annual Report</br>
+CoE Corner</br>
+Learning Augmented</br>
+Strategic Plan
+</div>
+
+<div class="Followuson">
+  <h2 style="font-size:19px;color:white;">Follow us on</h2>
+  <div class="followuson-images">
+    <img style="padding-right:18px;" src="images/coloredfacebook.webp" alt="facebook"  width=22px height=22px>
+    <img style="padding-right:18px;" src="images/coloredinstagram.webp" alt="instagram" width=22px height=22px>
+    
+    <img style="padding-right:18px;" src="images/coloredtwitter2.webp" alt="twitter" width=24px height=24px>
+    <img style="padding-right:18px;" src="images/coloredlinked.webp" alt="linkedin" width=22px height=22px>
+    <img style="padding-right:18px;"  src="images/coloredyoutube4.webp" alt="you tube" width=27px height=27px>
+   </div>
+</div>
+
+</div>
+<div class="copyright">
+Copyright © 2025 SCT. All Rights Reserved
+</div>
+<script>
+    /*mouseover and mouseout */
+    const linkFrst=document.getElementsByClassName("link1")[0]
+    linkFrst.addEventListener("mouseover",link1);
+    function link1(){
+      linkFrst.style.border="2px dashed #15263d";
+      linkFrst.style.transform="scale(1.1)";
+    }
+     linkFrst.addEventListener("mouseout",link11);
+     function link11(){
+      linkFrst.style.border="";
+      linkFrst.style.transform="";
+     }
+     /*link2 */
+     const linkSec=document.getElementsByClassName("link2")[0]
+    linkSec.addEventListener("mouseover",link2);
+    function link2(){
+      linkSec.style.border="2px dashed aquamarine";
+      linkSec.style.transform="scale(1.1)";
+    }
+     linkSec.addEventListener("mouseout",link22);
+     function link22(){
+      linkSec.style.border="";
+      linkSec.style.transform="";
+     }
+     /*link3 */
+      const linkThird=document.getElementsByClassName("link3")[0]
+    linkThird.addEventListener("mouseover",link3);
+    function link3(){
+      linkThird.style.border="2px dashed #15263d";
+      linkThird.style.transform="scale(1.1)";
+    }
+     linkThird.addEventListener("mouseout",link33);
+     function link33(){
+      linkThird.style.border="";
+      linkThird.style.transform="";
+     }
+
+     /*link4 */
+      const linkFourth=document.getElementsByClassName("link4")[0]
+    linkFourth.addEventListener("mouseover",link4);
+    function link4(){
+      linkFourth.style.border="2px dashed aquamarine";
+      linkFourth.style.transform="scale(1.1)";
+    }
+     linkFourth.addEventListener("mouseout",link44);
+     function link44(){
+      linkFourth.style.border="";
+      linkFourth.style.transform="";
+     }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
